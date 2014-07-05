@@ -1,0 +1,14 @@
+.post
+  %h4=link_to @post.title, @post.link
+  %p=@post.text
+  =render_votes(@post)
+  %p.post__by-line
+    created by
+    =link_to @post.user.username, @post.user
+    in
+    =link_to @post.sub.name, @post.sub
+    =", updated #{time_ago_in_words(@post.created_at)} ago"
+
+=link_to "Show complete post", @post
+
+=nested_comments(@comment.subtree.arrange)

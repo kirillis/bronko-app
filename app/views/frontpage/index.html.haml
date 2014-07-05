@@ -1,0 +1,11 @@
+%h3 The Frontpage
+%p Most popular Subs and newest Posts:
+
+
+-@subs.each do |sub|
+  .sub__excerpt
+    %h4
+      =link_to sub.name, sub
+      &ndash;
+      =sub.posts.count
+      Posts

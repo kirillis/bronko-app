@@ -1,0 +1,15 @@
+%h2 Login
+
+= form_for(:session, url: sessions_path) do |f|
+
+  %p Username:
+  =f.text_field :username
+
+  %p Password:
+  =f.password_field :password
+
+  =f.submit :Login, :class => "button"
+
+  %p 
+    New User? 
+    =link_to "Register now!", new_user_path

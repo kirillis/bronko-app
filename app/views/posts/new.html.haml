@@ -1,0 +1,21 @@
+%h1 Create new post
+
+- if @post.errors.any?
+  %h3 Form errors:
+  %ul.errors
+  - for message_error in @post.errors.full_messages
+    %li= message_error
+
+=form_for [@sub, @post] do |f|
+
+  %p Link:
+  =f.text_field :link
+
+  %p Title:
+  =f.text_field :title
+
+  %p Text:
+  =f.text_area :text
+
+  =f.submit :Signup, :class => "button"
+

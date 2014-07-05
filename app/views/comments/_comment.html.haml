@@ -1,0 +1,30 @@
+.comment
+  %p 
+    =comment.text
+
+  %p.comment_by-line
+    
+    =render_votes(comment)
+    Comment posted by
+    =link_to comment.user.username, comment.user
+    on
+    =formatted_created_at(comment)
+    =link_to "Permalink", comment
+    =" // "
+
+    -if signed_in? 
+      -# =link_to "Reply.", new_post_comment_path(@post, :parent_id => comment)
+      %a{:data => {'add_comment' => true}} Reply
+      .comment__add-box
+        =form_for Comment.new do |f|
+          =hidden_field_tag(:parent_id, comment.id) 
+          =hidden_field_tag(:post_id, @post.id) 
+          %p Your Comment:
+          =f.text_area :text
+          =f.submit "Save", :class => "button"
+          %a{ :class => "button", :data => {'cancel_comment' => true}} Cancel
+
+    -else
+      =link_to "Sign in to reply.", login_path
+
+

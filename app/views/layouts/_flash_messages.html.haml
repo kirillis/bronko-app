@@ -1,0 +1,8 @@
+-if !flash.empty?
+  -flash.each do |type, msg|
+    .alert-box{:class => type}
+      -if type == "success"
+        =fa_icon "check"
+      -else 
+        =fa_icon "exclamation"
+      = msg

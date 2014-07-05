@@ -1,0 +1,29 @@
+.post
+  %h4=link_to @post.title, @post.link
+  %p=@post.text
+  %p.post__by-line
+    =render_votes(@post)
+    =link_to @post.user.username, @post.user
+    in
+    =link_to @post.sub.name, @post.sub
+    =", updated #{time_ago_in_words(@post.created_at)} ago"
+
+-if @post.comments.empty?
+  %p 
+    No comments posted, yet.
+-else   
+  =nested_comments(@post.comments.arrange)
+
+%a{:class => "button", :data => {'add_comment' => true}} Add Comment
+
+.comment__add-box
+  -if signed_in?
+    =form_for @post.comments.new do |f|
+      %p Your Comment:
+      =hidden_field_tag(:post_id, @post.id) 
+      =f.text_area :text
+      =f.submit "Save", :class => "button"
+      %a{ :class => "button", :data => {'cancel_comment' => true}} Cancel
+
+  -else
+    =link_to "Sign in to post a comment.", login_path

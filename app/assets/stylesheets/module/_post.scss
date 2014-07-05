@@ -1,0 +1,19 @@
+.post,
+.post__excerpt {
+
+  background-color: #F3F3F3;
+  padding: $bsu / 2;
+  margin-bottom: $bsu;
+}
+
+.post {
+  border-bottom: 4px solid black;
+}
+
+.post__excerpt {
+  border-left: 4px solid black;
+}
+
+.post__by-line {
+  color: #808080;
+}

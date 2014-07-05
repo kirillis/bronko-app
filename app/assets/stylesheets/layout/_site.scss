@@ -1,0 +1,16 @@
+html,
+body {
+  height: 100%;
+}
+
+.main {
+  width: 950px;
+  margin: ($bsu*2) auto;
+  margin-bottom: 0;
+  padding-bottom: 200px;   // height of the footer!
+}
+
+.site-wrapper {
+  min-height:100%;
+  position:relative;
+}

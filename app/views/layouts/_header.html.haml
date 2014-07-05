@@ -1,0 +1,29 @@
+.site-header
+  %nav.top-bar{:data => {'topbar' => true}}
+    %ul.title-area
+      %li.name
+        %h1=link_to "Bronko", root_path
+      / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone 
+      %li.toggle-topbar.menu-icon
+        %a{:href => "#"}
+          %span Menu
+
+    %section.top-bar-section
+      / Right Nav Section
+      %ul.right
+        -if signed_in?
+          %li=link_to "Logged in as #{current_user.username}", current_user
+          %li
+            %a{:href => logout_path, :data => {'method' => 'delete'}}
+              =fa_icon "sign-out"
+              Logout
+        -else
+          %li
+            %a{:href => login_path}
+              =fa_icon "sign-in"
+              Login
+
+      / Left Nav Section
+      %ul.left
+        %li
+          =link_to "All subs", subs_path

@@ -1,0 +1,27 @@
+%h4=@sub.name
+%p=@sub.description
+
+-if signed_in?
+  =render :partial => "buttons/add", :locals => {:url => new_sub_post_path(@sub), :text => "Add new post" }
+-else
+  %p
+    To create a new post
+    =link_to "sign in", login_path
+
+-unless @sub.posts.empty?
+  -@sub.posts.each do |post|
+    .post__excerpt
+      %p
+        =link_to post.title, post.link
+      %p
+        =render_votes(post)
+        created by
+        =link_to post.user.username, post.user
+        ="on #{formatted_created_at(post)} //"
+        =link_to "#{post.comments.count} Comments", post
+        
+-else
+  .post__excerpt
+    %p No posts found for this sub.
+
+=render :partial => "buttons/list", :locals => {:url => subs_path, :text => "All subs" }

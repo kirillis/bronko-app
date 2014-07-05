@@ -1,0 +1,18 @@
+%h1 Create new sub
+
+- if @sub.errors.any?
+  %h3 Form errors:
+  %ul.errors
+  - for message_error in @sub.errors.full_messages
+    %li= message_error
+
+=form_for @sub do |f|
+
+  %p Name:
+  =f.text_field :name
+
+  %p Description: (optional)
+  =f.text_field :description
+
+  =f.submit "Create sub", :class => "button"
+

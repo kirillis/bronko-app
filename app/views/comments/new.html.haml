@@ -1,0 +1,14 @@
+%h1 Create new comment
+
+- if @comment.errors.any?
+  %h3 Form errors:
+  %ul.errors
+  - for message_error in @comment.errors.full_messages
+    %li= message_error
+
+=form_for [@post, @comment] do |f|
+  =f.hidden_field :parent_id
+  %p Text:
+  =f.text_area :text
+
+  =f.submit "Save comment", :class => "button"

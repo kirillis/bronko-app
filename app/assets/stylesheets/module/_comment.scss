@@ -1,0 +1,19 @@
+.comment {
+  background-color: #F8F8F8;
+  padding: $bsu/2;
+  padding-top: $bsu;
+  border-bottom: 2px solid rgb(197, 197, 197);
+  margin: $bsu 0;
+}
+
+.comment_by-line {
+  color: #888
+}
+
+.comment__comments-wrapper {
+  margin-left: $bsu;
+}
+
+.comment__add-box {
+  display: none;
+}

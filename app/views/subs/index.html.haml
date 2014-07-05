@@ -1,0 +1,9 @@
+-if signed_in?
+  =render "buttons/add", :url => new_sub_path, :text => "Add new sub"
+-else
+  %p
+    To create a new sub
+    =link_to "sign in", login_path
+
+-@subs.each do |sub|
+  %h4=link_to sub.name, sub
