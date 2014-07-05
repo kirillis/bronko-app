@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140529203058) do
   create_table "comments", force: true do |t|
     t.integer  "post_id"
     t.integer  "user_id"
-    t.string   "text"
+    t.text     "text"
     t.string   "ancestry"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20140529203058) do
   create_table "posts", force: true do |t|
     t.integer  "sub_id"
     t.integer  "user_id"
-    t.string   "title"
-    t.string   "text"
+    t.text     "title"
+    t.text     "text"
     t.string   "link"
     t.boolean  "visible",    default: false
     t.datetime "created_at"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140529203058) do
   create_table "subs", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.boolean  "visible",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"

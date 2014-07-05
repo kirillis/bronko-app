@@ -3,7 +3,7 @@ class CreateSubs < ActiveRecord::Migration
     create_table :subs do |t|
       t.references :user    
       t.string 'name'
-      t.string 'description'
+      t.text 'description'
       t.boolean 'visible', :default => false
 
       t.timestamps

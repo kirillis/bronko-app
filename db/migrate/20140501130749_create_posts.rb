@@ -3,8 +3,8 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.references 'sub'
       t.references 'user'
-      t.string 'title'
-      t.string 'text'
+      t.text 'title'
+      t.text 'text'
       t.string 'link'
       t.boolean 'visible', :default => false
 
