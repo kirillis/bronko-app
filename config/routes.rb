@@ -1,12 +1,11 @@
 SimpleCms::Application.routes.draw do
-  root :to => "frontpage#index"
+  root "frontpage#index"
   resources :comments
   resources :popmeters, only: ['update', 'destroy']
 
   resources :subs, shallow: true do
     resources :posts
   end
-
 
   resources :users
 
