@@ -1,2 +1,2 @@
-== bronko-app readmy
+== bronko-app readme
 reddit clone for learning rails 4
