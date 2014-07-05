@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.references 'user'
       t.text 'title'
       t.text 'text'
-      t.string 'link'
+      t.text 'link'
       t.boolean 'visible', :default => false
 
       t.timestamps
