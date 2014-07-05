@@ -1,4 +1,0 @@
-class VotesController < ApplicationsController
-
-
-end
