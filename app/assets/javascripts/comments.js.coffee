@@ -7,6 +7,7 @@ $(document).on 'page:change', ->
   $("a[data-add-comment]").on 'click', ->
     console.log "click!"
     form = $(this).next(".comment__add-box")
+    # FIXME: use css class to do this
     form.fadeIn()
 
   $("a[data-cancel-comment]").on 'click', ->
