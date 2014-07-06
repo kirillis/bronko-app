@@ -4,16 +4,16 @@
     -v = current_user.voted_for(obj, current_user)
     -if v.nil?
       %p You didn´t vote
-      = link_to "UPVOTE", popmeter_path(obj.popmeter, is_upvote: true), method: :patch
-      = link_to "DOWNVOTE", popmeter_path(obj.popmeter, is_upvote: false), method: :patch
+      = link_to "UPVOTE", popmeter_path(obj.popmeter, is_upvote: true), remote: true, method: :patch
+      = link_to "DOWNVOTE", popmeter_path(obj.popmeter, is_upvote: false), remote: true, method: :patch
     -else
       -if v.is_upvote
         %p You gave upvote
-        = link_to "RESET", popmeter_path(obj.popmeter), method: :delete
-        = link_to "DOWNVOTE", popmeter_path(obj.popmeter, is_upvote: false), method: :patch
+        = link_to "RESET", popmeter_path(obj.popmeter), remote: true, method: :delete
+        = link_to "DOWNVOTE", popmeter_path(obj.popmeter, is_upvote: false), remote: true, method: :patch
       -else
         %p you gave downvote
-        = link_to "RESET", popmeter_path(obj.popmeter), method: :delete
-        = link_to "UPVOTE", popmeter_path(obj.popmeter, is_upvote: true), method: :patch
+        = link_to "RESET", popmeter_path(obj.popmeter), remote: true, method: :delete
+        = link_to "UPVOTE", popmeter_path(obj.popmeter, is_upvote: true), remote: true, method: :patch
   -else
     sign in to vote

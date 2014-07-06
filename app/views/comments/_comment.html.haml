@@ -13,7 +13,6 @@
     =" // "
 
     -if signed_in? 
-      -# =link_to "Reply.", new_post_comment_path(@post, :parent_id => comment)
       %a{:data => {'add_comment' => true}} Reply
       .comment__add-box
         =form_for Comment.new do |f|
