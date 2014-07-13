@@ -2,11 +2,11 @@
 
 }
 
-
 .voter__button-wrapper {
   margin-bottom: $bsu;
 }
 
+.voter__total,
 .voter__vote {
   color: grey;
   border: 1px solid grey;
@@ -15,8 +15,12 @@
   margin-right: 10px;
   display: inline-block;
 
-  &.voter__vote--current {
+  &.is-current {
     color: green;
     border: 1px solid green;
   }
+}
+
+.voter__total {
+  margin-bottom: $bsu;
 }
