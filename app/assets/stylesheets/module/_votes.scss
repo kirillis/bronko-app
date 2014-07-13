@@ -1,20 +1,22 @@
-.votes {
-  margin-bottom:  $bsu;
-  display: inline-block;
-  background-color: #F2F2F2;
+.voter {
+
 }
 
-.votes__container {
-  padding: 0 $bsu/2;
-  border: 1px solid #E6E6E6;
 
-  p {
-    margin-bottom: 0;
+.voter__button-wrapper {
+  margin-bottom: $bsu;
+}
+
+.voter__vote {
+  color: grey;
+  border: 1px solid grey;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-right: 10px;
+  display: inline-block;
+
+  &.voter__vote--current {
+    color: green;
+    border: 1px solid green;
   }
-}
-
-p.votes__upvote,
-p.votes__downvote {
-  display: inline-block;
-  color: #EDB127;
 }

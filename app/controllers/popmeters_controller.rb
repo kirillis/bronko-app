@@ -36,6 +36,8 @@ class PopmetersController < ApplicationController
       
     end
 
+    @voted_obj = popmeter.votable
+
     respond_to do |format|
       if popmeter.save
         format.html { redirect_to popmeter.votable }
