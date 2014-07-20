@@ -1,4 +1,4 @@
 $(document).on 'page:change', ->
 
   # initialize voter manager widgets
-  $('.voter').voterManager()
+  voteManager = $('.voter').voterManager()

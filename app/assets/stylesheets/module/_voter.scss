@@ -15,6 +15,10 @@
   margin-right: 10px;
   display: inline-block;
 
+  &.is-hidden {
+    display: none;
+  }
+
   &.is-current {
     color: green;
     border: 1px solid green;

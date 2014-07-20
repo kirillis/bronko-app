@@ -17,8 +17,7 @@
 
     #Options to be used as defaults
     options:
-      someValue: null
-
+      voteState: null
 
     #Setup widget (eg. element creation, apply theming
     # , bind events etc.)
@@ -32,24 +31,32 @@
       console.log "voterManager created."
 
       @total = @element.find('.voter__total')
-      @up = @element.find('.voter__vote--up')
-      @down = @element.find('.voter__vote--down')
+      @upvote = @element.find('.voter__vote--up')
+      @downvote = @element.find('.voter__vote--down')
+      @reset = @element.find('.voter__vote--reset')
 
-      @_on @up,
-        "click": (event) ->
+
+      @reset.addClass('is-hidden')
+
+      @_on @upvote,
+        'click': (event) ->
           event.preventDefault()
-          console.log "up button clicked."
+          console.log 'click event upvote'
 
-        "ajax:success": (e, data, status, xhr) ->
-          console.log "ajax upvote success."
+        'ajax:success'
+          console.log 'ajax success upvote'
+          @upvote.addClass('is-current')
+          @downvote.removeClass('is-current')
 
-      @_on @down,
-        "click": (event) ->
+      @_on @downvote,
+        'click': (event) ->
           event.preventDefault()
-          console.log "down button clicked."
+          console.log 'click event downvote'
 
-        "ajax:success": (e, data, status, xhr) ->
-          console.log "ajax downvote success."
+        'ajax:success'
+          console.log 'ajax success downvote'
+          @downvote.addClass('is-current')
+          @upvote.removeClass('is-current')
 
     # Destroy an instantiated plugin and clean up
     # modifications the widget has made to the DOM
