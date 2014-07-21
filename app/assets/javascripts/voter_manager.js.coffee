@@ -1,62 +1,66 @@
-###!
-* jQuery UI Widget-factory plugin boilerplate (for 1.8/9+)
-* Author: @addyosmani
-* Further changes: @peolanha
-* Ported to CoffeeScript: @yckart
-* Licensed under the MIT license
-###
 (($, window, document) ->
-
-  # define your widget under a namespace of your choice
-  #  with additional parameters e.g.
-  # $.widget( "namespace.widgetname", (optional) - an
-  # existing widget prototype to inherit from, an object
-  # literal to become the widget's prototype );
 
   $.widget "bronko.voterManager",
 
-    #Options to be used as defaults
-    options:
-      voteState: null
-
-    #Setup widget (eg. element creation, apply theming
-    # , bind events etc.)
     _create: ->
-      # _create will automatically run the first time
-      # this widget is called. Put the initial widget
-      # setup code here, then you can access the element
-      # on which the widget was called via this.element.
-      # The options defined above can be accessed
-      # via this.options this.element.addStuff();
-      console.log "voterManager created."
 
       @total = @element.find('.voter__total')
       @upvote = @element.find('.voter__vote--up')
       @downvote = @element.find('.voter__vote--down')
       @reset = @element.find('.voter__vote--reset')
-
+      @votableId = @element.data('id')
 
       @reset.addClass('is-hidden')
 
       @_on @upvote,
         'click': (event) ->
           event.preventDefault()
-          console.log 'click event upvote'
+          console.log 'click event upvote: ', @votableId
 
-        'ajax:success'
-          console.log 'ajax success upvote'
-          @upvote.addClass('is-current')
-          @downvote.removeClass('is-current')
+          if @upvote.hasClass('is-current')
+            @upvote.removeClass('is-current')
+            @_resetVote()
+          else
+            @downvote.removeClass('is-current')
+            @upvote.addClass('is-current')
+            @_makeAjax(true)
 
       @_on @downvote,
         'click': (event) ->
           event.preventDefault()
-          console.log 'click event downvote'
+          console.log 'click event downvote: ', @votableId
 
-        'ajax:success'
-          console.log 'ajax success downvote'
-          @downvote.addClass('is-current')
-          @upvote.removeClass('is-current')
+          if @downvote.hasClass('is-current')
+            @downvote.removeClass('is-current')
+            @_resetVote()
+          else
+            @upvote.removeClass('is-current')
+            @downvote.addClass('is-current')
+            @_makeAjax(false)
+
+    _makeAjax: (isUpvote) ->
+      $.ajax
+        url: "/popmeters/" + @votableId + "?is_upvote=" + isUpvote,
+        dataType: 'script',
+        type: "PATCH",
+        done: ( xhr ) ->
+          console.log "done ajax: ", isUpvote, @votableId
+        success: ( data, textStatus, jqXHR ) ->
+          console.log "success ajax: ", isUpvote, @votableId
+        error: ( jqXHR, textStatus, errorThrown ) ->
+          console.log textStatus, errorThrown
+
+    _resetVote: ->
+      $.ajax
+        url: "/popmeters/" + @votableId,
+        dataType: 'script',
+        type: "DELETE",
+        done: ( xhr ) =>
+          console.log "done ajax: ", isUpvote, @votableId
+        success: ( data, textStatus, jqXHR ) =>
+          console.log "success ajax: ", isUpvote, @votableId
+        error: ( jqXHR, textStatus, errorThrown ) =>
+          console.log textStatus, errorThrown
 
     # Destroy an instantiated plugin and clean up
     # modifications the widget has made to the DOM
@@ -69,32 +73,6 @@
       # For UI 1.9, define _destroy instead and don't
       # worry about
       # calling the base widget
-
-    methodB: (event) ->
-      #_trigger dispatches callbacks the plugin user
-      # can subscribe to
-      # signature: _trigger( "callbackName" , [eventObject],
-      # [uiObject] )
-      # eg. this._trigger( "hover", e /*where e.type ==
-      # "mouseenter"*/, { hovered: $(e.target)});
-      console.log "methodB called"
-
-    methodA: (event) ->
-      @_trigger "dataChanged", event,
-        key: "someValue"
-      return
-
-
-    # Respond to any changes the user makes to the
-    # option method
-    _setOption: (key, value) ->
-      switch key
-        when "someValue"
-          #this.options.someValue = doSomethingWith( value );
-        else
-          #this.options[ key ] = value;
-          break
-
 
       # For UI 1.8, _setOption must be manually invoked
       # from the base widget

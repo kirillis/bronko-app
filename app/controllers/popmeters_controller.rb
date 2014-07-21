@@ -42,11 +42,9 @@ class PopmetersController < ApplicationController
       if popmeter.save
         format.html { redirect_to popmeter.votable }
         format.js   {}
-        format.json { render json: popmeter, status: :created, location: popmeter.votable }
       else
         format.html { redirect_to root }
         format.js   {}
-        format.json { render json: popmeter.errors, status: :error }
       end
     end
   end
@@ -67,6 +65,14 @@ class PopmetersController < ApplicationController
     # delete vote
     v.destroy
 
-    redirect_to popmeter.votable 
+    respond_to do |format|
+      if popmeter.save
+        format.html { redirect_to popmeter.votable }
+        format.js   {}
+      else
+        format.html { redirect_to root }
+        format.js   {}
+      end
+    end 
   end
 end

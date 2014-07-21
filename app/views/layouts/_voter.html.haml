@@ -1,4 +1,4 @@
-.voter
+.voter{:data => { :id => obj.popmeter.id }}
   %p= "#{obj.upvotes} / #{obj.downvotes}"
   %span.voter__total="#{obj.upvotes - obj.downvotes}"
 
@@ -6,17 +6,14 @@
     -if signed_in?
       -v = current_user.voted_for(obj, current_user)
       -if v.nil?
-        = link_to "UPVOTE", popmeter_path(obj.popmeter, is_upvote: true), class: "voter__vote voter__vote--up", remote: true, method: :patch
-        = link_to "RESET", popmeter_path(obj.popmeter), class: "voter__vote voter__vote--reset", remote: true, method: :delete
-        = link_to "DOWNVOTE", popmeter_path(obj.popmeter, is_upvote: false), class: "voter__vote voter__vote--down", remote: true, method: :patch
+        .voter__vote.voter__vote--up UPVOTE
+        .voter__vote.voter__vote--down DOWNVOTE
       -else
         -if v.is_upvote
-          = link_to "UPVOTE", popmeter_path(obj.popmeter, is_upvote: true), class: "voter__vote voter__vote--up is-current", remote: true, method: :patch
-          = link_to "RESET", popmeter_path(obj.popmeter), class: "voter__vote voter__vote--reset", remote: true, method: :delete
-          = link_to "DOWNVOTE", popmeter_path(obj.popmeter, is_upvote: false), class: "voter__vote voter__vote--down", remote: true, method: :patch
+          .voter__vote.voter__vote--up.is-current UPVOTE
+          .voter__vote.voter__vote--down DOWNVOTE
         -else
-          = link_to "UPVOTE", popmeter_path(obj.popmeter, is_upvote: true), class: "voter__vote voter__vote--up", remote: true, method: :patch
-          = link_to "RESET", popmeter_path(obj.popmeter), class: "voter__vote voter__vote--reset", remote: true, method: :delete
-          = link_to "DOWNVOTE", popmeter_path(obj.popmeter, is_upvote: false), class: "voter__vote voter__vote--down is-current", remote: true, method: :patch
+          .voter__vote.voter__vote--up UPVOTE
+          .voter__vote.voter__vote--down.is-current DOWNVOTE
     -else
       sign in to vote
