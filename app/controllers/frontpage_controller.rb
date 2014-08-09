@@ -1,6 +1,7 @@
 class FrontpageController < ApplicationController
   def index
-    @subs = Sub.all
+    @post = Post.all
+    @post.sort_by {|post| post.hotness}
     render('index')
   end
 

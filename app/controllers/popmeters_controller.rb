@@ -36,6 +36,10 @@ class PopmetersController < ApplicationController
       
     end
 
+    # update score
+    # popmeter.calculate_total
+    # popmeter.calculate_score
+
     @voted_obj = popmeter.votable
 
     respond_to do |format|
@@ -60,18 +64,16 @@ class PopmetersController < ApplicationController
       popmeter.downvotes -= 1
     end
 
-    popmeter.save
-
     # delete vote
     v.destroy
 
     respond_to do |format|
       if popmeter.save
+        format.js   {}
         format.html { redirect_to popmeter.votable }
-        format.js   {}
       else
-        format.html { redirect_to root }
         format.js   {}
+        format.html { redirect_to root }
       end
     end 
   end

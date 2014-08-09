@@ -12,6 +12,10 @@ class Post < ActiveRecord::Base
   validates :text, presence: true
   validates :link, presence: true
 
+  def hotness
+    self.popmeter.hotness
+  end
+
   def upvotes
     self.popmeter.upvotes
   end
