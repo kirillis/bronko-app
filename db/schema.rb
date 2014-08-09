@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 20140529203058) do
   create_table "popmeters", force: true do |t|
     t.integer  "upvotes",      default: 0
     t.integer  "downvotes",    default: 0
+    t.integer  "total",        default: 0
+    t.float    "hotness",      default: 0.0
+    t.float    "score",        default: 0.0
     t.integer  "votable_id"
     t.string   "votable_type"
     t.datetime "created_at"

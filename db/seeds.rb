@@ -49,6 +49,6 @@ puts "seeding posts"
       :visible => true,
       :sub_id => Random.rand(1..5),
       :user_id => Random.rand(1..5),
-      :popmeter => Popmeter.create
+      :popmeter => Popmeter.create(:upvotes => 100, :downvotes => 5)
     )
 end
