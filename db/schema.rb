@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140529203058) do
     t.integer  "user_id"
     t.text     "title"
     t.text     "text"
-    t.string   "link"
+    t.text     "link"
     t.boolean  "visible",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"

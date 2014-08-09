@@ -1,0 +1,30 @@
+.voter {
+
+}
+
+.voter__button-wrapper {
+  margin-bottom: $bsu;
+}
+
+.voter__total,
+.voter__vote {
+  color: grey;
+  border: 1px solid grey;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-right: 10px;
+  display: inline-block;
+
+  &.is-hidden {
+    display: none;
+  }
+
+  &.is-current {
+    color: green;
+    border: 1px solid green;
+  }
+}
+
+.voter__total {
+  margin-bottom: $bsu;
+}
