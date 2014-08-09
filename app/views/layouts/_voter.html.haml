@@ -1,5 +1,4 @@
 .voter{:data => { :id => obj.popmeter.id }}
-  %p= "#{obj.upvotes} / #{obj.downvotes}"
   %span.voter__total="#{obj.upvotes - obj.downvotes}"
 
   %div.voter__button-wrapper

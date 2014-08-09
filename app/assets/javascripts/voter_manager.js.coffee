@@ -7,60 +7,55 @@
       @total = @element.find('.voter__total')
       @upvote = @element.find('.voter__vote--up')
       @downvote = @element.find('.voter__vote--down')
-      @reset = @element.find('.voter__vote--reset')
       @votableId = @element.data('id')
-
-      @reset.addClass('is-hidden')
 
       @_on @upvote,
         'click': (event) ->
-          event.preventDefault()
-          console.log 'click event upvote: ', @votableId
-
           if @upvote.hasClass('is-current')
             @upvote.removeClass('is-current')
-            @_resetVote()
+            @_resetVote(true)
           else
+            @_makeAjax(true)
             @downvote.removeClass('is-current')
             @upvote.addClass('is-current')
-            @_makeAjax(true)
 
       @_on @downvote,
         'click': (event) ->
-          event.preventDefault()
-          console.log 'click event downvote: ', @votableId
-
           if @downvote.hasClass('is-current')
             @downvote.removeClass('is-current')
-            @_resetVote()
+            @_resetVote(false)
           else
+            @_makeAjax(false)
             @upvote.removeClass('is-current')
             @downvote.addClass('is-current')
-            @_makeAjax(false)
 
     _makeAjax: (isUpvote) ->
+
+      if isUpvote
+        if @downvote.hasClass('is-current')
+          @total.html(parseInt(@total.html()) + 1 )
+        @total.html(parseInt(@total.html()) + 1 )
+      else
+        if @upvote.hasClass('is-current')
+          @total.html(parseInt(@total.html()) - 1 )
+        @total.html(parseInt(@total.html()) - 1 )
+
       $.ajax
         url: "/popmeters/" + @votableId + "?is_upvote=" + isUpvote,
-        dataType: 'script',
-        type: "PATCH",
-        done: ( xhr ) ->
-          console.log "done ajax: ", isUpvote, @votableId
-        success: ( data, textStatus, jqXHR ) ->
-          console.log "success ajax: ", isUpvote, @votableId
-        error: ( jqXHR, textStatus, errorThrown ) ->
-          console.log textStatus, errorThrown
+        dataType: "script",
+        type: "PATCH"
 
-    _resetVote: ->
+    _resetVote: (isUpvote) ->
+
+      if isUpvote
+        @total.html( parseInt(@total.html()) - 1 )
+      else
+        @total.html( parseInt(@total.html()) + 1 )
+
+      # FIXME: this gives a error 500 response from the server
       $.ajax
         url: "/popmeters/" + @votableId,
-        dataType: 'script',
-        type: "DELETE",
-        done: ( xhr ) =>
-          console.log "done ajax: ", isUpvote, @votableId
-        success: ( data, textStatus, jqXHR ) =>
-          console.log "success ajax: ", isUpvote, @votableId
-        error: ( jqXHR, textStatus, errorThrown ) =>
-          console.log textStatus, errorThrown
+        type: "DELETE"
 
     # Destroy an instantiated plugin and clean up
     # modifications the widget has made to the DOM
