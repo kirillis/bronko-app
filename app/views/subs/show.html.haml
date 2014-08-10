@@ -10,16 +10,8 @@
 
 -unless @sub.posts.empty?
   -@sub.posts.each do |post|
-    .post__excerpt
-      %p
-        =link_to post.title, post.link
-      %p
-        =render_votes(post)
-        created by
-        =link_to post.user.username, post.user
-        ="on #{formatted_created_at(post)} //"
-        =link_to "#{post.comments.count} Comments", post
-        
+    =render_post_teaser(post)
+       
 -else
   .post__excerpt
     %p No posts found for this sub.

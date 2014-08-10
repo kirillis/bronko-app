@@ -7,6 +7,9 @@ class CreatePosts < ActiveRecord::Migration
       t.text 'text'
       t.text 'link'
       t.boolean 'visible', :default => false
+      t.integer :sub_comments, :default => 0
+      t.integer :votes_diff, :default => 0
+      t.float :hotness, :default => 0
 
       t.timestamps
     end

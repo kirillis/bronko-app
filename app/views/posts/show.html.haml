@@ -8,11 +8,20 @@
     =link_to @post.sub.name, @post.sub
     =", updated #{time_ago_in_words(@post.created_at)} ago"
 
+.row
+  .sorting
+    %form{action: request.original_url, method: 'get'}
+      .small-4.columns
+        =select_tag(:t, options_for_select(@time_array, @time_selected))
+      .small-4.columns
+        =select_tag(:m, options_for_select(@sort_options_array, @sort_selected))
+      .small-4.columns
+        =submit_tag 'Filter', name: nil
+
 -if @post.comments.empty?
-  %p 
-    No comments posted, yet.
--else   
-  =nested_comments(@post.comments.arrange)
+  %p No comments posted, yet.
+-else
+  =nested_comments(@comments)
 
 %a{:class => "button", :data => {'add_comment' => true}} Add Comment
 

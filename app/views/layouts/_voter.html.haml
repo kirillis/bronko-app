@@ -1,19 +1,22 @@
-.votes
-  %p= "#{obj.upvotes} / #{obj.downvotes}"
-  -if signed_in?
-    -v = current_user.voted_for(obj, current_user)
-    -if v.nil?
-      %p You didn´t vote
-      = link_to "UPVOTE", popmeter_path(obj.popmeter, is_upvote: true), method: :patch
-      = link_to "DOWNVOTE", popmeter_path(obj.popmeter, is_upvote: false), method: :patch
-    -else
-      -if v.is_upvote
-        %p You gave upvote
-        = link_to "RESET", popmeter_path(obj.popmeter), method: :delete
-        = link_to "DOWNVOTE", popmeter_path(obj.popmeter, is_upvote: false), method: :patch
+.voter{:data => { :id => obj.popmeter.id }}
+  %div.voter__button-wrapper
+    -if signed_in?
+      -v = current_user.voted_for(obj, current_user)
+      -if v.nil?
+        %span.voter__total="#{obj.upvotes - obj.downvotes}"
+        .voter__vote.voter__vote--up UPVOTE
+        .voter__vote.voter__vote--down DOWNVOTE
       -else
-        %p you gave downvote
-        = link_to "RESET", popmeter_path(obj.popmeter), method: :delete
-        = link_to "UPVOTE", popmeter_path(obj.popmeter, is_upvote: true), method: :patch
-  -else
-    sign in to vote
+        -if v.is_upvote
+          %span.voter__total="#{obj.upvotes - obj.downvotes}"
+          .voter__vote.voter__vote--up.is-current UPVOTE
+          .voter__vote.voter__vote--down DOWNVOTE
+        -else
+          %span.voter__total="#{obj.upvotes - obj.downvotes}"
+          .voter__vote.voter__vote--up UPVOTE
+          .voter__vote.voter__vote--down.is-current DOWNVOTE
+    -else
+      %span.voter__total="#{obj.upvotes - obj.downvotes}"
+      %a{:href => login_path}
+        =fa_icon "sign-in"
+        Login to vote

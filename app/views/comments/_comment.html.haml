@@ -1,19 +1,18 @@
 .comment
-  %p 
-    =comment.text
+  -if comment.has_children? 
+    %span.comment__minimizer="-"
+  %p=comment.text
 
   %p.comment_by-line
     
     =render_votes(comment)
     Comment posted by
     =link_to comment.user.username, comment.user
-    on
-    =formatted_created_at(comment)
+    ="#{time_ago_in_words(comment.created_at)} ago"
     =link_to "Permalink", comment
-    =" // "
+    =" - "
 
     -if signed_in? 
-      -# =link_to "Reply.", new_post_comment_path(@post, :parent_id => comment)
       %a{:data => {'add_comment' => true}} Reply
       .comment__add-box
         =form_for Comment.new do |f|

@@ -17,11 +17,23 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.popmeter = Popmeter.create
 
+    # +1 to parent comment
+    unless @comment.root?
+      parentComment = @comment.parent
+      parentComment.sub_comments = parentComment.sub_comments + 1
+      parentComment.save
+    end
+
+    # +1 post comment counter
+    p = @comment.post
+    p.sub_comments = p.sub_comments + 1
+    p.save
+
     if @comment.valid?
 
       if @comment.save
         flash[:success] = 'Comment was successfully created.'
-        redirect_to @comment
+        redirect_to Post.find(@comment.post_id)
       else
         flash[:alert] = 'Error, comment not created.'
         # TODO: add more options here

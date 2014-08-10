@@ -1,0 +1,21 @@
+.voter__button-wrapper {
+  margin-bottom: $bsu;
+}
+
+.voter__total,
+.voter__vote {
+  color: grey;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.voter__vote {
+  cursor: pointer;
+
+  &.is-current {
+    color: green;
+    border: 1px solid green;
+  }
+}
