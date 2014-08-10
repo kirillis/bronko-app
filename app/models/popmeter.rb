@@ -6,15 +6,27 @@ class Popmeter < ActiveRecord::Base
 
   def run_calcs
     calculate_total
-    if(self.total >= 0) 
-      calculate_score
+    if(self.total > 0) 
+      # save score to comment
+      if self.votable_id and self.votable_type == "Comment"
+        c = Comment.find(self.votable_id)
+        if c.votes_diff <= 0
+          c.score = 0
+        else
+          c.score = calculate_score
+        end
+        c.save
+      end
     end
 
     if(self.votable_type == "Post")
-      calculate_hotness
+      p = self.votable
+      p.hotness = calculate_hotness
+      p.save
     end
   end
 
+  # for cron job
   def recalculate_hotness
     calculate_hotness
   end
@@ -38,7 +50,7 @@ class Popmeter < ActiveRecord::Base
     z = Math.log10([x.abs, 1].max)
     ts = self.created_at.to_f - 1134028003
 
-    self.hotness = (z + y * ts / 45000).round(6)
+    (z + y * ts / 45000).round(6)
   end
   
   def calculate_score
@@ -56,7 +68,7 @@ class Popmeter < ActiveRecord::Base
     z = 1.96
     phat = 1.0*pos/n
     
-    self.score = (phat + z*z/(2*n) - z * Math.sqrt((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n)
+    (phat + z*z/(2*n) - z * Math.sqrt((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n)
   end
 
   def totalUpvotes

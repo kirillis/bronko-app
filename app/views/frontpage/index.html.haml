@@ -1,6 +1,15 @@
 %h3 The Frontpage
 %p Most popular Posts:
 
-%ul
-  -@post.each do |post|
-    %li="score: #{post.hotness} #{post.id}"
+.row
+  .sorting
+    %form{action: request.original_url, method: 'get'}
+      .small-4.columns
+        =select_tag(:t, options_for_select(@time_array, @time_selected))
+      .small-4.columns
+        =select_tag(:m, options_for_select(@sort_options_array, @sort_selected))
+      .small-4.columns
+        =submit_tag 'Filter', name: nil
+
+-@all_posts.each do |post|
+  =render_post_teaser(post)

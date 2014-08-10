@@ -1,0 +1,10 @@
+.post
+  %h4=link_to post.title, post.link
+  %p.post__by-line
+    =render_votes(post)
+    Posted by
+    =link_to post.user.username, post.user
+    in
+    =link_to post.sub.name, post.sub
+    =", updated #{time_ago_in_words(post.created_at)} ago, "
+    =link_to "#{post.comments.count} Comments", post

@@ -36,9 +36,19 @@ class PopmetersController < ApplicationController
       
     end
 
-    # update score
-    # popmeter.calculate_total
-    # popmeter.calculate_score
+    # if comment, calculate/save votes difference
+    if popmeter.votable_type == 'Comment'
+      c = popmeter.votable
+      c.votes_diff = popmeter.upvotes - popmeter.downvotes
+      c.save
+    end
+
+    # if comment, calculate/save votes difference
+    if popmeter.votable_type == 'Post'
+      p = popmeter.votable
+      p.votes_diff = popmeter.upvotes - popmeter.downvotes
+      p.save
+    end
 
     @voted_obj = popmeter.votable
 
