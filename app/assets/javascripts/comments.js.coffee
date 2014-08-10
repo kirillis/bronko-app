@@ -3,9 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'page:change', ->
-  console.log "comments.js loaded"
   $("a[data-add-comment]").on 'click', ->
-    console.log "click!"
     form = $(this).next(".comment__add-box")
 
     # FIXME: use css class to do this
@@ -13,3 +11,16 @@ $(document).on 'page:change', ->
 
   $("a[data-cancel-comment]").on 'click', ->
     $(this).parents(".comment__add-box").fadeOut()
+
+  $('.comment__minimizer').click( ->
+    thisComment = $(this).closest('.comment')
+    wrapper = thisComment.next('.comment__comments-wrapper')
+    console.log wrapper
+    if wrapper.is(':visible')
+      wrapper.slideUp()
+      $(this).html("+")
+    else
+      wrapper.slideDown()
+      $(this).html("-")
+  )
+

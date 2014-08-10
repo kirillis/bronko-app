@@ -10,6 +10,10 @@ class Comment < ActiveRecord::Base
   # validations
   validates :text, presence: true
   
+  def total
+    self.popmeter.total
+  end
+  
   def upvotes
     self.popmeter.upvotes
   end

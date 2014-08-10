@@ -16,6 +16,9 @@ ActiveRecord::Schema.define(version: 20140529203058) do
   create_table "comments", force: true do |t|
     t.integer  "post_id"
     t.integer  "user_id"
+    t.float    "score",        default: 0.0
+    t.integer  "sub_comments", default: 0
+    t.integer  "votes_diff",   default: 0
     t.text     "text"
     t.string   "ancestry"
     t.datetime "created_at"
@@ -25,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140529203058) do
   create_table "popmeters", force: true do |t|
     t.integer  "upvotes",      default: 0
     t.integer  "downvotes",    default: 0
+    t.integer  "total",        default: 0
     t.integer  "votable_id"
     t.string   "votable_type"
     t.datetime "created_at"
@@ -37,7 +41,10 @@ ActiveRecord::Schema.define(version: 20140529203058) do
     t.text     "title"
     t.text     "text"
     t.text     "link"
-    t.boolean  "visible",    default: false
+    t.boolean  "visible",      default: false
+    t.integer  "sub_comments", default: 0
+    t.integer  "votes_diff",   default: 0
+    t.float    "hotness",      default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

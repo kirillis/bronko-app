@@ -3,8 +3,11 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.references :post
       t.references :user
-      t.text 'text'
-      t.string 'ancestry'
+      t.float :score, :default => 0
+      t.integer :sub_comments, :default => 0
+      t.integer :votes_diff, :default => 0
+      t.text :text
+      t.string :ancestry
 
       t.timestamps
     end

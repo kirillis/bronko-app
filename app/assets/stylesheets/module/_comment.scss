@@ -1,8 +1,9 @@
 .comment {
-  background-color: #F8F8F8;
+  position: relative;
+  background-color: $color__grey-light;
   padding: $bsu/2;
   padding-top: $bsu;
-  border-bottom: 2px solid rgb(197, 197, 197);
+  border-bottom: 2px solid $color__black;
   margin: $bsu 0;
 }
 
@@ -16,4 +17,19 @@
 
 .comment__add-box {
   display: none;
+}
+
+.comment__minimizer {
+  display: block;
+  position: absolute;
+  background-color: $color__white;
+  padding: 15px;
+  right: 3px;
+  top: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color__black;
+    color: $color__white;
+  }
 }
