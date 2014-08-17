@@ -3,6 +3,11 @@
 
 -if signed_in?
   =render :partial => "buttons/add", :locals => {:url => new_sub_post_path(@sub), :text => "Add new post" }
+  
+  -if is_user_subscribed?(@sub)
+    =link_to 'Unsubscribe from this sub', subscription_path(@sub), :method => :delete
+  -else
+    =render :partial => "buttons/subscribe", :locals => {:url => new_sub_subscription_path(@sub), :text => "Subscribe to this sub" }
 -else
   %p
     To create a new post

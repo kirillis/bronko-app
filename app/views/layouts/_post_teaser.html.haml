@@ -3,7 +3,10 @@
   %p.post__by-line
     =render_votes(post)
     Posted by
-    =link_to post.user.username, post.user
+    -if post.user
+      =link_to post.user.username, post.user
+    -else
+      %span.user_deleted user deleted
     in
     =link_to post.sub.name, post.sub
     =", updated #{time_ago_in_words(post.created_at)} ago, "
