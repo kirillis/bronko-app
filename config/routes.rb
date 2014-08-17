@@ -5,6 +5,7 @@ SimpleCms::Application.routes.draw do
 
   resources :subs, shallow: true do
     resources :posts
+    resources :subscriptions, only: ['new', 'destroy']
   end
 
   resources :users
