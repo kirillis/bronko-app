@@ -24,7 +24,7 @@
       &mdash;
       ="#{post.upvotes}/#{post.downvotes} created by "
       =link_to post.user.username, post.user
-      ="on #{formatted_created_at(post)}"
+      ="on #{time_ago_in_words(post.created_at)}"
 
 %h4 All your comments:
 -@user.comments.each do |comment|
@@ -35,7 +35,7 @@
       &mdash;
       ="#{comment.upvotes}/#{comment.downvotes} created by "
       =link_to comment.user.username, comment.user
-      ="on #{formatted_created_at(comment)} //"
+      ="on #{time_ago_in_words(comment.created_at)} //"
       =link_to "#{comment.root.children.count} replies", comment
       ="//"
       =link_to "show post", comment.post

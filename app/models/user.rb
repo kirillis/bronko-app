@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :comments, :order => 'created_at DESC'
   has_many :votes
   has_many :subscriptions
-  has_many :subs, through: :subscriptions
+  has_many :subscribed_subs, through: :subscriptions, :source => :sub
 
   # validations
   validates :username, presence: true, uniqueness: { case_sensitive: false }

@@ -1,9 +1,9 @@
 %h3 The Frontpage
 
--if current_user.subs.any?
+-if current_user.subscribed_subs.any?
   %p Subscriptions:
   %ul
-    -current_user.subs.each do |s|
+    -current_user.subscribed_subs.each do |s|
       %li=link_to s.name, s
 
 %p Most popular Posts:

@@ -3,7 +3,7 @@ class Sub < ActiveRecord::Base
   # relations
   has_many :posts, :order => 'created_at DESC'
   has_many :subscriptions
-  has_many :users, through: :subscriptions
+  has_many :subscribers, through: :subscriptions, :source => :user
   belongs_to :user
 
   # scopes
