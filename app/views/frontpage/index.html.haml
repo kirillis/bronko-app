@@ -1,10 +1,11 @@
 %h3 The Frontpage
 
--if current_user.subscribed_subs.any?
-  %p Subscriptions:
-  %ul
-    -current_user.subscribed_subs.each do |s|
-      %li=link_to s.name, s
+-if signed_in?
+  -if current_user.subscribed_subs.any?
+    %p Subscriptions:
+    %ul
+      -current_user.subscribed_subs.each do |s|
+        %li=link_to s.name, s
 
 %p Most popular Posts:
 

@@ -3,11 +3,15 @@ module SessionsHelper
   # sign in user by creating new token, 
   # storing token in cookie 
   # and update database with token -> user
-  def sign_in(user)
+  def sign_in(user, remember_me)
     remember_token = User.new_remember_token
-    cookies.permanent[:remember_token] = remember_token
     user.update_attribute(:remember_token, User.digest(remember_token))
     self.current_user = user
+    if remember_me == "1"
+      cookies.permanent[:remember_token] = remember_token
+    else
+      cookies[:remember_token] = remember_token
+    end
   end
 
   # setter method for current_user var

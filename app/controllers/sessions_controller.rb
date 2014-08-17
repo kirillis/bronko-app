@@ -4,11 +4,12 @@ class SessionsController < ApplicationController
   end
 
   def create
+    logger.debug "New post: #{params}"
     user = User.find_by username: params[:session][:username]
 
     if user && user.authenticate(params[:session][:password])
       flash[:success] = "correct"
-      sign_in user
+      sign_in(user, params[:remember_me])
       redirect_to root_url
       return
     else
