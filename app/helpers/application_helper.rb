@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def is_user_subscribed?(sub)
-    sub.users.where(:id => current_user.id).any?
+    sub.subscribers.where(:id => current_user.id).any?
   end
 
 
