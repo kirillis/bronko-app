@@ -6,7 +6,15 @@ module ApplicationHelper
 
   def render_votes(votable_obj)
     render partial: "layouts/voter", locals: {obj: votable_obj}
-  end  
+  end
+
+  def is_user_subscribed?(sub)
+    sub.subscribers.where(:id => current_user.id).any?
+  end
+
+  def time_array
+    [['Last hour', 'hour'], ['Today', 'today'], ['Week', 'week'], ['Month', 'month'], ['Alltime', 'alltime']]
+  end
 
   def recalculate_hotness
     popmeterAll = Popmeter.where(votable_type: "Post")

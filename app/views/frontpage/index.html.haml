@@ -1,13 +1,21 @@
 %h3 The Frontpage
+
+-if signed_in?
+  -if current_user.subscribed_subs.any?
+    %p Subscriptions:
+    %ul
+      -current_user.subscribed_subs.each do |s|
+        %li=link_to s.name, s
+
 %p Most popular Posts:
 
 .row
   .sorting
     %form{action: request.original_url, method: 'get'}
       .small-4.columns
-        =select_tag(:t, options_for_select(@time_array, @time_selected))
+        =select_tag(:t, options_for_select(Rails.application.config.time_array, @time_selected))
       .small-4.columns
-        =select_tag(:m, options_for_select(@sort_options_array, @sort_selected))
+        =select_tag(:m, options_for_select(Rails.application.config.sort_options_array, @sort_selected))
       .small-4.columns
         =submit_tag 'Filter', name: nil
 

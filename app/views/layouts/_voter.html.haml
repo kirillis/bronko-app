@@ -1,7 +1,8 @@
 .voter{:data => { :id => obj.popmeter.id }}
   %div.voter__button-wrapper
     -if signed_in?
-      -v = current_user.voted_for(obj, current_user)
+      -# -v = current_user.voted_for(obj, current_user)
+      -v = nil
       -if v.nil?
         %span.voter__total="#{obj.upvotes - obj.downvotes}"
         .voter__vote.voter__vote--up UPVOTE

@@ -8,6 +8,11 @@
   %p Password:
   =f.password_field :password
 
+
+  =label_tag(:remember_me, "Remember me")
+  =check_box_tag(:remember_me)
+  %br/
+
   =f.submit :Login, :class => "button"
 
   %p 

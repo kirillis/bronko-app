@@ -19,5 +19,8 @@ module SimpleCms
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.time_array = [['Last hour', 'hour'], ['Today', 'today'], ['Week', 'week'], ['Month', 'month'], ['Alltime', 'alltime']]
+    config.sort_options_array = [['Hotness', 'hotness'], ['Comments', 'comments'], ['Votes', 'votes'], ['Newest', 'newest']]
   end
 end

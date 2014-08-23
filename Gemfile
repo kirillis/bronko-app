@@ -65,6 +65,7 @@ end
 group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'debugger'
 
   # ---------------------------------
   # better errors, binding of caller and meta request from video tutorial: 
@@ -84,6 +85,3 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

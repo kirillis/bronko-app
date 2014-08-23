@@ -1,42 +1,44 @@
-%h3 Show User
+%h3 User Details
 
 =gravatar_for(@user)
 
 %p= "Username: #{@user.username}"
 
-%h4 All your subs:
 -if @user.subs.empty?
-  %p no subs found
+  %p Not created a sub yet.
 -else
+  %h4 All subs:
   -@user.subs.each do |sub|
     .sub
       %p
         =link_to "#{sub.name} ", sub
       %p= sub.description
-      %p= "Posts in sub: #{sub.posts.count}"
+      %p= "Posts in sub: #{sub.posts.length}"
 
-%h4 All your posts:
--@user.posts.each do |post|
-  .post__excerpt
-    %p
-      =link_to "#{truncate(post.title, length: 100)} ", post
-    %p
-      &mdash;
-      ="#{post.upvotes}/#{post.downvotes} created by "
-      =link_to post.user.username, post.user
-      ="on #{formatted_created_at(post)}"
+-if @user.posts.empty?
+  %p Not posted anything yet.
+-else 
+  %h4 All posts:
+  -@user.posts.each do |post|
+    .post__excerpt
+      %p
+        =link_to "#{truncate(post.title, length: 100)} ", post
+      %p
+        &mdash;
+        ="#{post.upvotes}/#{post.downvotes} - created"
+        =time_ago_in_words(post.created_at)
 
-%h4 All your comments:
--@user.comments.each do |comment|
-  .comment
-    =link_to comment.post.title, comment.post.link
-    %p= comment.text
-    %p
-      &mdash;
-      ="#{comment.upvotes}/#{comment.downvotes} created by "
-      =link_to comment.user.username, comment.user
-      ="on #{formatted_created_at(comment)} //"
-      =link_to "#{comment.root.children.count} replies", comment
-      ="//"
-      =link_to "show post", comment.post
-      ="(#{comment.post.comments.count} comments)"
+-if @user.comments.empty?
+  %p No comments yet.
+-else
+  %h4 All comments:
+  -@user.comments.each do |comment|
+    .comment
+      =link_to comment.post.title, comment.post.link
+      %p= comment.text
+      %p
+        &mdash;
+        ="#{comment.upvotes}/#{comment.downvotes} - created"
+        =time_ago_in_words(comment.created_at)
+        ="-"
+        =link_to "show post", comment.post

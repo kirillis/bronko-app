@@ -3,13 +3,28 @@
 
 -if signed_in?
   =render :partial => "buttons/add", :locals => {:url => new_sub_post_path(@sub), :text => "Add new post" }
+  
+  -if is_user_subscribed?(@sub)
+    =link_to 'Unsubscribe from this sub', subscription_path(@sub), :method => :delete
+  -else
+    =render :partial => "buttons/subscribe", :locals => {:url => new_sub_subscription_path(@sub), :text => "Subscribe to this sub" }
 -else
   %p
     To create a new post
     =link_to "sign in", login_path
 
--unless @sub.posts.empty?
-  -@sub.posts.each do |post|
+.row
+  .sorting
+    %form{action: request.original_url, method: 'get'}
+      .small-4.columns
+        =select_tag(:t, options_for_select(Rails.application.config.time_array, @time_selected))
+      .small-4.columns
+        =select_tag(:m, options_for_select(@sort_options_array, @sort_selected))
+      .small-4.columns
+        =submit_tag 'Filter', name: nil
+
+-unless @all_posts.empty?
+  -@all_posts.each do |post|
     =render_post_teaser(post)
        
 -else
