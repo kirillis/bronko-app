@@ -9,5 +9,5 @@
       %span.user_deleted user deleted
     in
     =link_to post.sub.name, post.sub
-    =", updated #{time_ago_in_words(post.created_at)} ago, "
-    =link_to "#{post.comments.count} Comments", post
+    =", created #{time_ago_in_words(post.created_at)} ago, "
+    =link_to "#{post.comments.length} Comments", post

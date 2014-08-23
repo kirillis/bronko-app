@@ -2,7 +2,7 @@ class SubscriptionsController < ApplicationController
 
   def new
     @sub = Sub.find(params['sub_id'])
-    @sub.users << current_user
+    @sub.subscribers << current_user
     redirect_to @sub
   end
 

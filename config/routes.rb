@@ -1,5 +1,7 @@
 SimpleCms::Application.routes.draw do
   root "frontpage#index"
+  get 'my_frontpage' => 'frontpage#my_index', as: :my_frontpage
+
   resources :comments
   resources :popmeters, only: ['update', 'destroy']
 

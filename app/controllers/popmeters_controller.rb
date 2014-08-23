@@ -1,7 +1,6 @@
 class PopmetersController < ApplicationController
 
   def update
-
     popmeter = Popmeter.find(params['id'])
 
     # create/update user vote
@@ -9,7 +8,6 @@ class PopmetersController < ApplicationController
     v = popmeter.votes.find_by(user_id: current_user.id)
 
     if v.nil?
-
       # create new vote
       popmeter.votes.create(user_id: current_user.id, is_upvote: params['is_upvote'])
       
@@ -19,9 +17,7 @@ class PopmetersController < ApplicationController
       else
         popmeter.downvotes += 1
       end
-
     else
-
       # if vote by user for popmeter already exists, change to value to opposite
       if v.is_upvote
         popmeter.upvotes -= 1
@@ -30,12 +26,10 @@ class PopmetersController < ApplicationController
         popmeter.upvotes += 1
         popmeter.downvotes -= 1
       end
-
       # update old vote
       v.update_attributes(user_id: current_user.id, is_upvote: params['is_upvote'])
-      
     end
-
+    
     # if comment, calculate/save votes difference
     if popmeter.votable_type == 'Comment'
       c = popmeter.votable

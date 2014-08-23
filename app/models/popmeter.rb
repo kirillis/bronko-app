@@ -21,7 +21,7 @@ class Popmeter < ActiveRecord::Base
 
     if(self.votable_type == "Post")
       p = self.votable
-      p.hotness = calculate_hotness
+      p.hotness = calculate_hotness(p.created_at)
       p.save
     end
   end
@@ -36,7 +36,7 @@ class Popmeter < ActiveRecord::Base
     self.total = self.upvotes + self.downvotes    
   end
 
-  def calculate_hotness
+  def calculate_hotness(created_at_date)
     # The hot formula. Should match the equivalent function in postgres.
     # http://amix.dk/blog/post/19588
     x = totalUpvotes
@@ -48,7 +48,7 @@ class Popmeter < ActiveRecord::Base
       y = 0
     end
     z = Math.log10([x.abs, 1].max)
-    ts = self.created_at.to_f - 1134028003
+    ts = created_at_date.to_f - 1134028003
 
     (z + y * ts / 45000).round(6)
   end
