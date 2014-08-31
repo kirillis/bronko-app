@@ -1,0 +1,6 @@
+-if signed_in? and current_user.subscribed_subs.any?
+  .subscriptionsList
+    %h5.subscriptionsList-title My Subs
+    %ul.subscriptionsList.no-bullet
+      -current_user.subscribed_subs.each do |s|
+        %li.subscriptionsList-item=link_to s.name, s, class: 'subscriptionsList-link'

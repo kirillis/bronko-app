@@ -23,4 +23,3 @@ $(document).on 'page:change', ->
       wrapper.slideDown()
       $(this).html("-")
   )
-

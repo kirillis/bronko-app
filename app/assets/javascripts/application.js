@@ -13,8 +13,13 @@
 //= require jquery
 //= require jquery-ui/widget
 //= require jquery_ujs
-//= require foundation
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+//= require foundation
+
+$(document).on('page:change', function() {
+  $(document).foundation();
+  $('.sortingBar').sortingManager();
+  $('.voter').voterManager();
+});

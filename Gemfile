@@ -36,14 +36,13 @@ gem "haml-rails"
 # thin server
 gem 'thin'
 
-# foundation
-gem 'foundation-rails'
-
 # font awesome
 gem "font-awesome-rails"
 
-#awesome_print
-gem 'awesome_print', :require => 'ap'
+gem 'foundation-rails'
+
+# autoprefixer - https://github.com/ai/autoprefixer-rails
+gem "autoprefixer-rails"
 
 # ancestry
 gem 'ancestry'
@@ -66,6 +65,9 @@ group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   gem 'debugger'
+
+  #awesome_print
+  gem 'awesome_print', :require => 'ap'
 
   # ---------------------------------
   # better errors, binding of caller and meta request from video tutorial: 

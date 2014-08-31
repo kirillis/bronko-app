@@ -1,11 +1,11 @@
 module ApplicationHelper
 
   def render_post_teaser(post)
-    render partial: "layouts/post_teaser", locals: {post: post}
+    render partial: "posts/post_teaser", locals: {post: post}
   end
 
   def render_votes(votable_obj)
-    render partial: "layouts/voter", locals: {obj: votable_obj}
+    render partial: "voter/voter", locals: {obj: votable_obj}
   end
 
   def is_user_subscribed?(sub)

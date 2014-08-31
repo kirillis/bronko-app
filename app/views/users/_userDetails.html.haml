@@ -1,0 +1,13 @@
+.userDetails
+  .row
+  -if signed_in?
+    .small-4.columns
+      =gravatar_for(current_user)
+    .small-8.columns
+      =link_to current_user.username, current_user, class: 'userDetails-userName'
+      %a.userDetails-logout{:href => logout_path, :data => {'method' => 'delete'}}
+        =fa_icon "sign-out"
+  -else
+    %a.userDetails-login{:href => login_path}
+      =fa_icon "sign-in"
+      Login
