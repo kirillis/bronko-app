@@ -1,0 +1,9 @@
+.boxtest {
+  background: #fff;
+  box-sizing: border;
+}
+
+
+.boxtest_2 {
+  @include box-sizing(border-box);
+}

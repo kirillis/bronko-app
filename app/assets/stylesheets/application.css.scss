@@ -9,18 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  */
-/*= require foundation */
+
+@import "vendor\normalize";
+@import "base\base-dir";
 
 // vendor
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,300");
-@import "foundation_and_overrides";
-@import "font-awesome";
+@import "vendor\vendor-dir";
 
 // custom
-@import "vars";
-@import "site";
-@import "components\siteBrand";
-@import "components\siteLinks";
-@import "components\mainNav";
-@import "components\sortingBar";
-@import "components\forms";
+@import "layout\layout-dir";
+@import "modules\modules-dir";

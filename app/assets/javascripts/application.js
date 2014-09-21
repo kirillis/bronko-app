@@ -16,10 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-//= require foundation
-
 $(document).on('page:change', function() {
-  $(document).foundation();
   $('.sortingBar').sortingManager();
   $('.voter').voterManager();
 });
