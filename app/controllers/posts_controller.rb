@@ -25,7 +25,7 @@ class PostsController < ApplicationController
         all_comments = @post.comments.where(:created_at => time_range)
       end
     else
-      @time_selected = 'today'
+      @time_selected = 'month'
       all_comments = @post.comments.where(:created_at => (1.day.ago..Time.now))
     end
 
