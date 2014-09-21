@@ -1,0 +1,22 @@
+.metaInfo
+  .metaInfo-item
+    =link_to post, class: "metaInfo-link" do
+      %span.metaInfo-icon=fa_icon "comment-o"
+      %span.metaInfo-text=post.comments.length
+
+  .metaInfo-item
+    -if post.user
+      =link_to post.user, class: "metaInfo-link" do
+        %span.metaInfo-icon=fa_icon "user"
+        %span.metaInfo-text=post.user.username
+    -else
+      %span.user_deleted User deleted
+
+  .metaInfo-item
+    =link_to post.sub, class: "metaInfo-link" do
+      %span.metaInfo-icon=fa_icon "tag"
+      %span.metaInfo-text=post.sub.name
+
+  .metaInfo-item
+    %span.metaInfo-icon=fa_icon "clock-o"
+    %span.metaInfo-text="#{time_ago_in_words(post.created_at)} ago"
