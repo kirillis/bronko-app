@@ -1,19 +1,6 @@
-.sortingBar
-  .row
-    .small-4.columns
-      %ul.sortingMethod.inline-list
+=render partial: 'layouts/sortingBar', locals: {sort_options: Rails.application.config.sort_options_posts_array}
 
-    .small-4.columns.end
-      %form.sortingForm{action: request.original_url, method: 'get'}
-        .sortingForm-methodSelect
-          =select_tag(:m, options_for_select(Rails.application.config.sort_options_array, @sort_selected))
-        .sortingForm-timeSelect
-          =select_tag(:t, options_for_select(Rails.application.config.time_array, @time_selected), class: 'sortingForm-timeSelect')
-        =submit_tag 'Filter', name: nil, class: 'sortingBar-submit'
+-@all_posts.each do |post|
+  =render_post_teaser(post)
 
-.row
-  .small-12.medium-10.columns
-    -@all_posts.each do |post|
-      =render_post_teaser(post)
-  .small-12.medium-2.columns
-    =render 'subs/subscriptions'
+=render 'subs/subscriptions'

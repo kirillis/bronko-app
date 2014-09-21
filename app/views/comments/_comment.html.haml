@@ -1,29 +1,44 @@
 .comment
-  -if comment.has_children? 
-    %span.comment__minimizer="-"
-  %p=comment.text
+  .commentContent
 
-  %p.comment_by-line
-    
     =render_votes(comment)
-    Comment posted by
-    =link_to comment.user.username, comment.user
-    ="#{time_ago_in_words(comment.created_at)} ago"
-    =link_to "Permalink", comment
-    =" - "
 
-    -if signed_in? 
-      %a{:data => {'add_comment' => true}} Reply
-      .comment__add-box
+    .metaInfo
+      .metaInfo-item
+        -if comment.user
+          =link_to comment.user, class: "metaInfo-link" do
+            %span.metaInfo-icon=fa_icon "user"
+            %span.metaInfo-text=comment.user.username
+        -else
+          %span.user_deleted User deleted
+
+      .metaInfo-item
+        %span.metaInfo-icon=fa_icon "clock-o"
+        %span.metaInfo-text="#{time_ago_in_words(comment.created_at)} ago"
+
+      .metaInfo-item
+        -if signed_in?
+          %a.metaInfo-link{:data => {'add_comment' => true}} 
+            %span.metaInfo-icon=fa_icon "reply" 
+            %span.metaInfo-text Reply
+        -else
+          =link_to "Sign in to reply.", login_path
+
+      -if comment.has_children?
+        %a.metaInfo-link{:data => {'minimize' => true}} 
+          %span.metaInfo-icon=fa_icon "minus"
+          %span.metaInfo-text Minimize
+
+    %p.comment-text
+      =comment.text
+      .addCommentBox
         =form_for Comment.new do |f|
           =hidden_field_tag(:parent_id, comment.id) 
           =hidden_field_tag(:post_id, @post.id) 
-          %p Your Comment:
-          =f.text_area :text
-          =f.submit "Save", :class => "button"
-          %a{ :class => "button", :data => {'cancel_comment' => true}} Cancel
+          =f.text_area :text, class: "addCommentBox-text", placeholder: "Your comment..", rows: 5
+          =f.submit "Save", class: "addCommentBox-submit"
+          %a.addCommentBox-cancel{ data: {'cancel_comment' => true}} Cancel
 
-    -else
-      =link_to "Sign in to reply.", login_path
+
 
 

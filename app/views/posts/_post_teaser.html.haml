@@ -1,13 +1,7 @@
-.post
-  %h4=link_to post.title, post.link
-  %p.post__by-line
-    =render_votes(post)
-    Posted by
-    -if post.user
-      =link_to post.user.username, post.user
-    -else
-      %span.user_deleted user deleted
-    in
-    =link_to post.sub.name, post.sub
-    =", created #{time_ago_in_words(post.created_at)} ago, "
-    =link_to "#{post.comments.length} Comments", post
+.postTeaser
+  =render_votes(post)
+  %h4.postTeaser-title
+    =link_to post.title, post.link, class: "postTeaser-link fs-larger"
+
+  =render partial: "posts/post_meta", locals: {post: post}
+
