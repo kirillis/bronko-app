@@ -9,6 +9,7 @@
     _create: ->
 
       @methodSelect = @element.find('.sortingForm-methodSelect')
+      @timeSelect = @element.find('.sortingForm-timeSelect')
       @submit = @element.find('.sortingForm-submit')
       @sortingForm = @element.find('.sortingForm')
       @sortingMethod = @element.find('.sortingMethod')
@@ -16,7 +17,8 @@
       @methodSelect.addClass('hide');
       @submit.addClass('hide');
 
-      # get all sorting mehtods from hidden form select
+      # get all sorting mehtods from hidden form select and
+      # insert new list markup
       @methodSelect.find('option').each (i, element) =>
         isSelected = $(element).attr('selected') == 'selected' ? true : false
         value = $(element).attr('value')
@@ -26,12 +28,18 @@
         else
           @sortingMethod.append "<li class='sortingMethod-link' data-value='#{value}'>#{html}</li>"
 
+      # search for links after inserting them into page and
+      # bind click events to submit original form
       @sortingMethodLinks = @element.find('.sortingMethod-link')
       @_on @sortingMethodLinks,
         'click': (event) =>
           @resetMethodSelect()
           value = $(event.target).data('value')
           @sortingForm.find("option[value=#{value}]").attr('selected', 'selected')
+          @sortingForm.submit()
+
+      @_on @timeSelect,
+       'change': (event) =>
           @sortingForm.submit()
 
     resetMethodSelect: ->
