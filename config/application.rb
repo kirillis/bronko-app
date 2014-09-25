@@ -20,6 +20,9 @@ module SimpleCms
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # add webfont
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
     config.time_array = [['Last hour', 'hour'], ['Today', 'today'], ['Week', 'week'], ['Month', 'month'], ['Alltime', 'alltime']]
     config.sort_options_posts_array = [['Hotness', 'hotness'], ['Comments', 'comments'], ['Votes', 'votes'], ['Newest', 'newest']]
     config.sort_options_comments_array = [['Score', 'score'], ['Comments', 'comments'], ['Votes', 'votes'], ['Newest', 'newest']]
