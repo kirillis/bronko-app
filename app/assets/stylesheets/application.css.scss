@@ -10,12 +10,9 @@
  *
  */
 
-@import "vendor\normalize";
-@import "base\base-dir";
-
-// vendor
-@import "vendor\vendor-dir";
-
-// custom
-@import "layout\layout-dir";
-@import "modules\modules-dir";
+@import "vendor/normalize";
+@import "vendor/bourbon/bourbon";
+@import "base/base-dir";
+@import "vendor/neat/neat";
+@import "layout/layout-dir";
+@import "modules/modules-dir";

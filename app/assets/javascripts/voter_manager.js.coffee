@@ -4,9 +4,9 @@
 
     _create: ->
 
-      @total = @element.find('.voter__total')
-      @upvote = @element.find('.voter__vote--up')
-      @downvote = @element.find('.voter__vote--down')
+      @total = @element.find('.voter-total')
+      @upvote = @element.find('.voter-vote-up')
+      @downvote = @element.find('.voter-vote-down')
       @votableId = @element.data('id')
 
       @_on @upvote,

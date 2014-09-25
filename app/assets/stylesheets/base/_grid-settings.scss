@@ -3,3 +3,10 @@
 // define breakpoint vars to use in media() calls here
 // e.g. $mobile: new-breakpoint(max-width 480px 4);
 //      usage: @include media($mobile) { ... }
+
+
+$max-width: em(1500);
+
+$mobile: new-breakpoint(max-width 480px 4);
+$tablet: new-breakpoint(max-width 768px 8);
+$desk: new-breakpoint(max-width 1024px 12);
