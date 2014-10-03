@@ -19,7 +19,7 @@
 	font-style:normal;
 }
 
-.glyph-icon {
+.icon {
 	font-family:"bronko-icons";
 	display:inline-block;
 	vertical-align:middle;
@@ -38,26 +38,31 @@
 /* Icons */
 
 
-.glyph_icons_comments:before {
+.icons_burger:before {
 	content:"\f101";
 }
 
 
-.glyph_icons_date:before {
+.icons_comments:before {
 	content:"\f102";
 }
 
 
-.glyph_icons_logo:before {
+.icons_date:before {
 	content:"\f103";
 }
 
 
-.glyph_icons_logo_big:before {
+.icons_logo:before {
 	content:"\f104";
 }
 
 
-.glyph_icons_user:before {
+.icons_logo_big:before {
 	content:"\f105";
+}
+
+
+.icons_user:before {
+	content:"\f106";
 }

@@ -12,6 +12,8 @@ $font-weight-xbold: 700;
 $font-sans: 'Open Sans', Arial, Helvetica, sans-serif;
 $font-monospaced: 'Inconsolata', Monaco, Courier, monospace;
 $font-base-size: 16px;
+$font-size-small: $font-base-size - 2;
+$font-size-big: $font-base-size + 2;
 $font-base-weight: $font-weight-normal;
 $font-base-lineheight: 1.5;
 $font-header-lineheight: 1.25;
@@ -23,4 +25,4 @@ $font-size-h4: $font-base-size * 1.5;
 $font-size-h5: $font-base-size * 1.25;
 $font-size-h6: $font-base-size;
 
-$base-spacing: $font-base-lineheight * 1em;
+$base-spacing: $font-base-lineheight * 1rem;

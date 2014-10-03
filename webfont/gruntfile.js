@@ -12,7 +12,12 @@ module.exports = function(grunt) {
           relativeFontPath: '/assets',
           syntax: 'bem',
           hashes: false,
-          engine: 'node'
+          engine: 'node',
+          templateOptions: {
+            baseClass: 'icon',
+            classPrefix: '',
+            mixinPrefix: ''
+          }
         }
       }
     }
