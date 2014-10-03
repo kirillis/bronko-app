@@ -1,10 +1,12 @@
 .userDetails
--if signed_in?
-  =gravatar_for(current_user)
-  =link_to current_user.username, current_user, class: 'userDetails-userName'
-  %a.userDetails-logout{:href => logout_path, :data => {'method' => 'delete'}}
-    =fa_icon "sign-out"
--else
-  %a.userDetails-login{:href => login_path}
-    =fa_icon "sign-in"
-    Login
+  -if signed_in?
+    %a.userDetails-userName{:href => current_user}
+      %i.icon.icons_user
+      %span.username
+        =current_user.username
+    %a.userDetails-logout{:href => logout_path, :data => {'method' => 'delete'}}
+      =fa_icon "sign-out"
+  -else
+    %a.userDetails-login{:href => login_path}
+      =fa_icon "sign-in"
+      Login

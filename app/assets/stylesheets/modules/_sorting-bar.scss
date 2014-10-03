@@ -1,0 +1,55 @@
+.sortingBar {
+  .js & {
+    .sortingForm-methodSelect,
+    .sortingForm-submit {
+        @include media($lap-and-up) {
+          display: none;
+        }
+      }
+    }
+
+  .sortingMethod,
+  .sortingForm {
+    display: inline-block;
+  }
+
+  .sortingMethod {
+    display: none;
+    @include media($lap-and-up) {
+      display: inline-block;
+    }
+  }
+
+  .sortingForm-timeSelect,
+  .sortingForm-methodSelect,
+  .sortingForm-submit {
+    display: inline-block;
+  }
+
+  .sortingMethod-item,
+  .sortingForm-timeSelect {
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
+
+    &:hover {
+      color: $color-link-hover;
+      border-color: $color-link-hover;
+    }
+  }
+
+  .sortingMethod-item {
+    display: inline-block;
+    padding: $base-spacing * .5;
+    margin-right: $base-spacing * .5;
+    border-bottom: 3px solid $color-grey-dark;
+    cursor: pointer;
+
+    &.is-active {
+      border-color: $color-link-base;
+    
+      &:hover {
+        border-color: $color-link-hover;
+      }
+    }
+  }
+}

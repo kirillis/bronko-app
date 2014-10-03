@@ -1,0 +1,15 @@
+.metaInfo {
+  padding: $base-spacing * .5;
+  border-top: 1px solid $color-grey;
+  background-color: $color-grey-light;
+}
+
+.metaInfo-item {
+  display: inline-block;
+  margin-right: $base-spacing;
+  color: $color-grey-dark;
+}
+
+.metaInfo-link {
+  color: $color-grey-dark;
+}

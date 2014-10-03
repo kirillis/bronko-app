@@ -1,0 +1,99 @@
+.mainNavigation {
+  background-color: $color-grey-light;
+  position: relative;
+}
+
+.l-mainNavigation-siteBrand {
+  display: inline-block;
+  padding: $base-spacing * 0.5;
+}
+
+.l-mainNavigation-siteLinks {
+  @include media($lap-and-up) {
+    display: inline-block;
+  } 
+}
+
+.l-mainNavigation-userDetails {
+  display: none;
+
+  @include media($lap-and-up) {
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: $base-spacing * 0.5;
+  }
+}
+
+.mobileMenu-burgerButton {
+  position: absolute;
+  top: $base-spacing * 0.5;
+  right: $base-spacing * 0.5;
+  font-size: $font-size-h3;
+  color: $color-red;
+
+  @include media($lap-and-up) {
+    display: none;
+  }
+}
+
+.siteLinks-subList {
+  padding: 0;
+
+  @include media($lap-and-up) {
+    display: inline-block;
+  }
+}
+
+.siteLinks-item {
+  list-style-type: none;
+
+  @include media($lap-and-up) {
+    display: inline;
+    padding-right: $base-spacing * 1.5;
+  }
+}
+
+.siteLinks-item--user {
+  @include media($lap-and-up) {
+    display: none;
+  }
+}
+
+span.siteLinks-link {
+  @include media($lap-and-up) {
+    display: none;
+  }
+}
+
+.siteLinks--mainNavigation {
+
+  @include media($palm) {
+    margin: 0;
+    padding: 0;
+    background-color: $color-green;
+
+    .siteLinks-subList {
+      background-color: $color-green-dark;
+    }
+
+    .siteLinks-item {
+      padding: 0;
+      border-bottom: 1px solid $color-green-light;
+    }
+
+    .siteLinks-link {
+      display: block;
+      padding: 10px 0 10px $base-spacing;
+      color: $color-white;
+
+      &:hover {
+        color: $color-link-hover;
+      }
+    }
+
+    &.is-closed {
+      display: none;
+    }
+  }
+}

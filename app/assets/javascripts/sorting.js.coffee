@@ -14,9 +14,6 @@
       @sortingForm = @element.find('.sortingForm')
       @sortingMethod = @element.find('.sortingMethod')
 
-      @methodSelect.addClass('hide');
-      @submit.addClass('hide');
-
       # get all sorting mehtods from hidden form select and
       # insert new list markup
       @methodSelect.find('option').each (i, element) =>
@@ -24,13 +21,13 @@
         value = $(element).attr('value')
         html = $(element).html()
         if isSelected
-          @sortingMethod.append "<li class='sortingMethod-link is-active' data-value='#{value}'>#{html}</li>"
+          @sortingMethod.append "<li class='sortingMethod-item is-active' data-value='#{value}'>#{html}</li>"
         else
-          @sortingMethod.append "<li class='sortingMethod-link' data-value='#{value}'>#{html}</li>"
+          @sortingMethod.append "<li class='sortingMethod-item' data-value='#{value}'>#{html}</li>"
 
       # search for links after inserting them into page and
       # bind click events to submit original form
-      @sortingMethodLinks = @element.find('.sortingMethod-link')
+      @sortingMethodLinks = @element.find('.sortingMethod-item')
       @_on @sortingMethodLinks,
         'click': (event) =>
           @resetMethodSelect()

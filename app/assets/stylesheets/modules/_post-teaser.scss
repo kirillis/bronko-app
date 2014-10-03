@@ -1,0 +1,18 @@
+.postTeaser {
+  @include clearfix;
+}
+
+.postTeaser-wrapper {
+  margin-left: $base-spacing * 2;
+  margin-bottom: $base-spacing * 2;
+  margin-right: $base-spacing;
+  background-color: $color-white;
+}
+
+.postTeaser-title {
+  padding: $base-spacing * .5;
+}
+
+.postTeaser-link {
+  color: $color-black;
+}

@@ -1,0 +1,26 @@
+.siteBrand {
+
+}
+
+.siteBrand-siteIcon {
+  font-size: $font-size-h3;
+  color: $color-red;
+}
+
+.siteBrand-siteIcon {
+  display: inline-block;
+
+  > .icons_logo_big {
+    padding-bottom: 4px;
+  }
+}
+
+.siteBrand-siteName {
+  display: inline-block;
+}
+
+.siteBrand-siteLink {
+  font-size: $font-size-h3;
+  color: $color-black;
+  font-weight: $font-weight-light;
+}

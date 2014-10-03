@@ -1,15 +1,44 @@
-.mainNav
-  %nav.mainSiteNav
+%nav.mainNavigation
+  .l-mainNavigation-siteBrand
     .siteBrand
-      .icon.icon_icons_logo
+      .siteBrand-siteIcon
+        %i.icon.icons_logo_big
       %h1.siteBrand-siteName
         =link_to "BRNK", root_path, class: 'siteBrand-siteLink'
 
-    %ul.siteLinks.siteLinks--topMargin.inline-list.fs-larger
-      %li.siteLinks-item
-        =link_to "Frontpage", root_path, class: 'siteLinks-link'
+    .mobileMenu-burgerButton
+      %i.icon.icons_burger
+
+
+  .l-mainNavigation-siteLinks
+    %ul.siteLinks.siteLinks--mainNavigation
+      -if signed_in?
+        %li.siteLinks-item.siteLinks-item--user
+          %a.siteLinks-link{:href => current_user}
+            %i.icon.icons_user
+            %span.username
+              =current_user.username
+      -else 
+        %li.siteLinks-item.siteLinks-item--user
+          %a.siteLinks-link{:href => login_path}
+            =fa_icon "sign-in"
+            Login
       -if signed_in?
         %li.siteLinks-item
           =link_to "My frontpage", my_frontpage_path, class: 'siteLinks-link'
+      -else
+        %li.siteLinks-item
+          =link_to "Frontpage", root_path, class: 'siteLinks-link'
 
+      / SUBSCRIPTIONS LIST
+      -if current_user.subscribed_subs.any?
+        %li.siteLinks-item
+          %span.siteLinks-link My subscriptions
+          %ul.siteLinks-subList
+            -current_user.subscribed_subs.each do |s|
+              %li.siteLinks-item=link_to s.name, s, class: 'siteLinks-link'
+
+  .l-mainNavigation-userDetails
     =render "users/userDetails"
+
+
