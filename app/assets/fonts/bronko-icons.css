@@ -38,31 +38,56 @@
 /* Icons */
 
 
-.icons_burger:before {
+.icons_arrow_down:before {
 	content:"\f101";
 }
 
 
-.icons_comments:before {
+.icons_arrow_down_thin:before {
 	content:"\f102";
 }
 
 
-.icons_date:before {
+.icons_arrow_up:before {
 	content:"\f103";
 }
 
 
-.icons_logo:before {
+.icons_arrow_up_thin:before {
 	content:"\f104";
 }
 
 
-.icons_logo_big:before {
+.icons_burger:before {
 	content:"\f105";
 }
 
 
-.icons_user:before {
+.icons_comments:before {
 	content:"\f106";
+}
+
+
+.icons_date:before {
+	content:"\f107";
+}
+
+
+.icons_logo:before {
+	content:"\f108";
+}
+
+
+.icons_logo_big:before {
+	content:"\f109";
+}
+
+
+.icons_plus:before {
+	content:"\f10a";
+}
+
+
+.icons_user:before {
+	content:"\f10b";
 }
