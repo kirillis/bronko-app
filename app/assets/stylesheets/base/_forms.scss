@@ -1,14 +1,14 @@
 input,
 label,
 select {
-  margin-right: $base-spacing * .5;
   padding: $base-spacing * .5;
-  border: 0;
-  border-bottom: 3px solid $color-grey-dark;
+  margin-right: $base-spacing * .5;
   font-size: $font-size-small;
   font-weight: $font-weight-light;
-  background-color: $color-background;
   cursor: pointer;
+  background-color: $color-background;
+  border: 0;
+  border-bottom: 3px solid $color-grey-dark;
 
   &:hover {
     color: $color-link-hover;

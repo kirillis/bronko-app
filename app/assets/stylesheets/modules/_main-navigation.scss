@@ -1,11 +1,11 @@
 .mainNavigation {
-  background-color: $color-grey-light;
   position: relative;
+  background-color: $color-grey-light;
 }
 
 .l-mainNavigation-siteBrand {
   display: inline-block;
-  padding: $base-spacing * 0.5;
+  padding: $base-spacing * .5;
 }
 
 .l-mainNavigation-siteLinks {
@@ -18,17 +18,17 @@
   display: none;
 
   @include media($lap-and-up) {
-    display: block;
     position: absolute;
     top: 30px;
-    right: $base-spacing * 0.5;
+    right: $base-spacing * .5;
+    display: block;
   }
 }
 
 .mobileMenu-burgerButton {
   position: absolute;
-  top: $base-spacing * 0.5;
-  right: $base-spacing * 0.5;
+  top: $base-spacing * .5;
+  right: $base-spacing * .5;
   font-size: $font-size-h3;
   color: $color-red;
 
@@ -69,8 +69,8 @@ span.siteLinks-link {
 .siteLinks--mainNavigation {
 
   @include media($palm) {
-    margin: 0;
     padding: 0;
+    margin: 0;
     background-color: $color-green;
 
     .siteLinks-subList {

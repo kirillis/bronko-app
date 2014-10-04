@@ -1,14 +1,7 @@
-.siteBrand {
-
-}
-
-.siteBrand-siteIcon {
-  font-size: $font-size-h3;
-  color: $color-red;
-}
-
 .siteBrand-siteIcon {
   display: inline-block;
+  font-size: $font-size-h3;
+  color: $color-red;
 
   > .icons_logo_big {
     padding-bottom: 4px;
@@ -21,6 +14,6 @@
 
 .siteBrand-siteLink {
   font-size: $font-size-h3;
-  color: $color-black;
   font-weight: $font-weight-light;
+  color: $color-black;
 }
