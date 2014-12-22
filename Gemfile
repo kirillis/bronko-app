@@ -30,7 +30,7 @@ end
 
 group :development do
   gem 'sqlite3' # Use sqlite3 as the database for Active Record
-  gem 'debugger'
+  # gem 'debugger'
   gem 'awesome_print', :require => 'ap'
   # ---------------------------------
   # better errors, binding of caller and meta request from video tutorial: 
