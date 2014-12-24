@@ -30,15 +30,6 @@
         %li.siteLinks-item
           =link_to "Frontpage", root_path, class: 'siteLinks-link'
 
-      / SUBSCRIPTIONS LIST
-      -if signed_in?
-        -if current_user.subscribed_subs.any?
-          %li.siteLinks-item
-            %span.siteLinks-link My subscriptions
-            %ul.siteLinks-subList
-              -current_user.subscribed_subs.each do |s|
-                %li.siteLinks-item=link_to s.name, s, class: 'siteLinks-link'
-
   .l-mainNavigation-userDetails
     =render "users/userDetails"
 

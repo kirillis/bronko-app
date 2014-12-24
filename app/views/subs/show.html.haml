@@ -39,7 +39,10 @@
 -else
   .post__excerpt
     %p No posts found for this sub.
-=render 'subs/subscriptions'
+
+
+-content_for :sidebarContent do
+  =render 'subs/subscriptions'
 
 
 

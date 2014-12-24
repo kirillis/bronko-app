@@ -46,12 +46,7 @@
 }
 
 .siteLinks-item {
-  list-style-type: none;
 
-  @include media($lap-and-up) {
-    display: inline;
-    padding-right: $base-spacing * 1.5;
-  }
 }
 
 .siteLinks-item--user {
