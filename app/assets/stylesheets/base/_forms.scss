@@ -6,12 +6,10 @@ select {
   font-size: $font-size-small;
   font-weight: $font-weight-light;
   cursor: pointer;
-  background-color: $color-background;
-  border: 0;
-  border-bottom: 3px solid $color-grey-dark;
+  background-color: $color-white;
+  border: 1px solid $color-grey;
 
   &:hover {
     color: $color-link-hover;
-    border-bottom: 3px solid $color-link-hover;
   }
 }

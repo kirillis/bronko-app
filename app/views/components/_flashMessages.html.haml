@@ -1,6 +1,6 @@
 -if !flash.empty?
   -flash.each do |type, msg|
-    .alert-box{:class => type}
+    .Message{:class => type}
       -if type == "success"
         =fa_icon "check"
       -else 

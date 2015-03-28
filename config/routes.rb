@@ -11,6 +11,9 @@ SimpleCms::Application.routes.draw do
   end
 
   resources :users
+  match '/my_posts', to: 'users#my_posts', via: 'get', as: :my_posts
+  match '/my_subs', to: 'users#my_subs', via: 'get', as: :my_subs
+  match '/my_comments', to: 'users#my_comments', via: 'get', as: :my_comments
 
   # session and login/out
   resources :sessions, only: [:new, :create, :destroy]

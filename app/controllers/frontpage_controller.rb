@@ -1,7 +1,6 @@
 class FrontpageController < ApplicationController
 
   def index
-
     if(params.has_key?(:t))
       @time_selected = params[:t]
       time_range = get_time_range(@time_selected)
@@ -12,8 +11,8 @@ class FrontpageController < ApplicationController
         @all_posts = Post.includes(:comments, :user, :sub, :popmeter).where(:created_at => time_range)
       end
     else
-      @time_selected = 'month'
-      @all_posts = Post.includes(:comments, :user, :sub, :popmeter).where(:created_at => (1.month.ago..Time.now))
+      @time_selected = 'alltime'
+      @all_posts = Post.includes(:comments, :user, :sub, :popmeter)
     end
       
     if(params.has_key?(:m))
@@ -27,7 +26,6 @@ class FrontpageController < ApplicationController
   end
 
   def my_index
-
     if(params.has_key?(:t))
       @time_selected = params[:t]
       time_range = get_time_range(@time_selected)
@@ -38,7 +36,7 @@ class FrontpageController < ApplicationController
         @all_posts = Post.includes(:comments, :user, :sub, :popmeter).joins("INNER JOIN subscriptions ON posts.sub_id = subscriptions.sub_id").where('subscriptions.user_id' => current_user.id, :created_at => time_range )
       end
     else
-      @time_selected = 'month'
+      @time_selected = 'alltime'
       @all_posts = Post.includes(:comments, :user, :sub, :popmeter).joins("INNER JOIN subscriptions ON posts.sub_id = subscriptions.sub_id").where('subscriptions.user_id' => current_user.id, :created_at => (1.month.ago..Time.now) )
     end
 

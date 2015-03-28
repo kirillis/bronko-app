@@ -1,0 +1,3 @@
+-@user.comments.each do |comment|
+  =render partial: "components/entry", locals: {:content => comment, :comments_post => comment.post}
+  

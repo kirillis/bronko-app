@@ -1,8 +1,0 @@
-.postTeaser
-  =render_votes(post)
-  .postTeaser-wrapper
-    %p.postTeaser-title
-      =link_to post.title, post.link, class: "postTeaser-link"
-
-    =render partial: "posts/post_meta", locals: {post: post}
-

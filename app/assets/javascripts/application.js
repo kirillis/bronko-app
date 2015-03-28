@@ -17,6 +17,6 @@
 //= require_tree .
 
 $(document).on('page:change', function() {
-  $('.sortingBar').sortingManager();
-  $('.voter').voterManager();
+  $('.SortingBar').SortingManager();
+  $('.Voter').VoterManager();
 });

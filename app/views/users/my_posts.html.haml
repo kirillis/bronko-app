@@ -1,0 +1,6 @@
+-if @user.posts.empty?
+  %p Not posted anything yet.
+-else 
+  %h4 My posts:
+  -@user.posts.each do |post|
+    =render partial: "components/entry", locals: {:content => post}

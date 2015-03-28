@@ -1,18 +1,14 @@
-# $(document).on 'page:change', ->
-#   $('.sortingForm').find('.sortingForm-methodSelect').addClass('hide');
-#   $('.sortingForm').find('.sorting-submit').addClass('hide');
+$ do ->
 
-(($, window, document) ->
-
-  $.widget "bronko.sortingManager",
+  $.widget "bronko.SortingManager",
 
     _create: ->
 
-      @methodSelect = @element.find('.sortingForm-methodSelect')
-      @timeSelect = @element.find('.sortingForm-timeSelect')
-      @submit = @element.find('.sortingForm-submit')
-      @sortingForm = @element.find('.sortingForm')
-      @sortingMethod = @element.find('.sortingMethod')
+      @methodSelect = @element.find('.SortingForm-methodSelect')
+      @timeSelect = @element.find('.SortingForm-timeSelect')
+      @submit = @element.find('.SortingForm-submit')
+      @sortingForm = @element.find('.SortingForm')
+      @sortingMethod = @element.find('.SortingMethod')
 
       # get all sorting mehtods from hidden form select and
       # insert new list markup
@@ -21,13 +17,13 @@
         value = $(element).attr('value')
         html = $(element).html()
         if isSelected
-          @sortingMethod.append "<li class='sortingMethod-item is-active' data-value='#{value}'>#{html}</li>"
+          @sortingMethod.append "<li class='SortingMethod-item is-active' data-value='#{value}'>#{html}</li>"
         else
-          @sortingMethod.append "<li class='sortingMethod-item' data-value='#{value}'>#{html}</li>"
+          @sortingMethod.append "<li class='SortingMethod-item' data-value='#{value}'>#{html}</li>"
 
       # search for links after inserting them into page and
       # bind click events to submit original form
-      @sortingMethodLinks = @element.find('.sortingMethod-item')
+      @sortingMethodLinks = @element.find('.SortingMethod-item')
       @_on @sortingMethodLinks,
         'click': (event) =>
           @resetMethodSelect()
@@ -62,4 +58,3 @@
       # this._super( "_setOption", key, value );
       return
   return
-) jQuery, window, document

@@ -44,7 +44,36 @@ class UsersController < ApplicationController
       flash[:alert] = "Form fields missing."
       render "new"
     end
+  end
 
+  def my_posts
+    if signed_in?
+      @user = User.includes(posts: [:popmeter, :user]).find(current_user.id)
+      render 'my_posts'
+    else
+      flash[:alert] = "You need to be logged in to view this page."
+      redirect_to root_path
+    end      
+  end
+
+  def my_subs
+    if signed_in?
+      @user = User.includes(subs: :posts).find(current_user.id)
+      render 'my_subs'
+    else
+      flash[:alert] = "You need to be logged in to view this page."
+      redirect_to root_path
+    end      
+  end
+
+  def my_comments
+    if signed_in?
+      @user = User.includes(comments: [:post, :user, :popmeter]).find(current_user.id)
+      render 'my_comments'
+    else
+      flash[:alert] = "You need to be logged in to view this page."
+      redirect_to root_path
+    end      
   end
 
   def user_params

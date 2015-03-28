@@ -3,30 +3,35 @@
   %head
     %meta{"name" => "viewport", "charset" => "utf-8", "content" => "width = device-width, user-scalable = no, initial-scale = 1.0"}
     %title Bronko [beta]
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag :modernizr
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-    = csrf_meta_tags
+    =stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    =javascript_include_tag :modernizr
+    =javascript_include_tag "application", "data-turbolinks-track" => true
+    =csrf_meta_tags
     %body
-      =render "layouts/flash_messages"
+      =render "components/flashMessages"
 
-      .siteWrapper
+      .SiteWrapper
         =render "layouts/header"
 
-        .siteContent
-          .mainContent
-            = yield
+        =yield :sortingBar
 
-          .sidebarContent
-            = yield :sidebarContent
+
+        .SiteContent
+          .MainContent
+            =yield
+
+          .SidebarContent
+            =yield :sidebarContent
+
             / SUBSCRIPTIONS LIST
             -if signed_in?
               -if current_user.subscribed_subs.any?
-                %li.siteLinks-item
-                  %span.siteLinks-link My subscriptions
-                  %ul.siteLinks-subList
+                %p My subscriptions:
+                %li.SiteLinks-item
+                  %span.SiteLinks-link My subscriptions
+                  %ul.SiteLinks-subList
                     -current_user.subscribed_subs.each do |s|
-                      %li.siteLinks-item=link_to s.name, s, class: 'siteLinks-link'
+                      %li.SiteLinks-item=link_to s.name, s, class: 'siteLinks-link'
 
               %p Add Sub button
 

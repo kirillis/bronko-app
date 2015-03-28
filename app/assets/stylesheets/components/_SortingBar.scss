@@ -1,55 +1,59 @@
-.sortingBar {
+.SortingBar {
+  background-color: rgb(215, 215, 215);
+  margin-bottom: $bsu;
+
   .js & {
-    .sortingForm-methodSelect,
-    .sortingForm-submit {
+    .SortingForm-methodSelect,
+    .SortingForm-submit {
       @include media($lap-and-up) {
         display: none;
       }
     }
   }
 
-  .sortingMethod,
-  .sortingForm {
+  .SortingMethod,
+  .SortingForm {
     display: inline-block;
   }
 
-  .sortingMethod {
+  .SortingMethod {
     display: none;
+    margin-bottom: 0;
+    margin-top: 0;
 
     @include media($lap-and-up) {
       display: inline-block;
     }
   }
 
-  .sortingForm-timeSelect,
-  .sortingForm-methodSelect,
-  .sortingForm-submit {
+  .SortingForm-timeSelect,
+  .SortingForm-methodSelect,
+  .SortingForm-submit {
     display: inline-block;
   }
 
-  .sortingMethod-item,
-  .sortingForm-timeSelect {
+  .SortingMethod-item,
+  .SortingForm-timeSelect {
     font-size: $font-size-small;
     font-weight: $font-weight-light;
 
     &:hover {
       color: $color-link-hover;
-      border-color: $color-link-hover;
     }
   }
 
-  .sortingMethod-item {
+  .SortingMethod-item {
     display: inline-block;
     padding: $base-spacing * .5;
     margin-right: $base-spacing * .5;
     cursor: pointer;
-    border-bottom: 3px solid $color-grey-dark;
 
     &.is-active {
-      border-color: $color-link-base;
-    
+      background-color: $color-grey;
+      color: $color-black;
       &:hover {
-        border-color: $color-link-hover;
+        background-color: $color-grey;
+        color: $color-black;
       }
     }
   }

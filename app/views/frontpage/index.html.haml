@@ -1,4 +1,5 @@
-=render partial: 'layouts/sortingBar', locals: {sort_options: Rails.application.config.sort_options_posts_array}
+-content_for :sortingBar do
+  =render partial: 'components/sortingBar', locals: {sort_options: Rails.application.config.sort_options_posts_array}
 
 -@all_posts.each do |post|
-  =render_post_teaser(post)
+  =render partial: "components/entry", locals: {:content => post, :isPostTeaser => true}

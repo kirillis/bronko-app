@@ -1,10 +1,10 @@
 $(document).on 'page:change', ->
 
-  mainNavigationButton = $('.mobileMenu-burgerButton')
-  mainNavigationElement = $('.siteLinks.siteLinks--mainNavigation')
+  mainNavigationButton = $('.MobileMenu-burgerButton')
+  mainNavigationElement = $('.MobileMenu')
 
   unless mainNavigationElement.hasClass('is-closed') 
     mainNavigationElement.addClass('is-closed')
 
-  $('.mobileMenu-burgerButton').click ->
+  $('.MobileMenu-burgerButton').click ->
     mainNavigationElement.toggleClass('is-closed')

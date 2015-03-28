@@ -37,8 +37,7 @@ class SubsController < ApplicationController
         @all_posts = @all_posts.where(:created_at => time_range)
       end
     else
-      @time_selected = 'month'
-      @all_posts = @all_posts.where(:created_at => (1.month.ago..Time.now))
+      @time_selected = 'alltime'
     end
     render('show')
   end

@@ -1,0 +1,42 @@
+.MetaInfo
+  .MetaInfo-item
+    -if content.user
+      =link_to content.user, class: "MetaInfo-link" do
+        %span.MetaInfo-icon
+          %i.icon.icons_user
+        %span.MetaInfo-text=content.user.username
+    -else
+      %span.user_deleted User deleted
+
+  .MetaInfo-item
+    %span.MetaInfo-icon
+      %i.icon.icons_date
+      %span.MetaInfo-text="#{time_ago_in_words(content.created_at)} ago"
+
+  -if content.kind_of? Post
+    .MetaInfo-item
+      =link_to content.sub, class: "MetaInfo-link" do
+        %span.MetaInfo-icon
+          %i.icon.icons_logo
+        %span.MetaInfo-text=content.sub.name
+        
+    .MetaInfo-item
+      =link_to content, class: "MetaInfo-link" do
+        %span.MetaInfo-icon
+          %i.icon.icons_comments
+        %span.MetaInfo-text=content.comments.length
+  
+
+  -if content.kind_of? Comment
+    .MetaInfo-item
+      -if signed_in?
+        %a.MetaInfo-link{:data => {'add_comment' => true}} 
+          %span.MetaInfo-icon=fa_icon "reply" 
+          %span.MetaInfo-text Reply
+      -else
+        =link_to "Sign in to reply.", login_path
+
+    / -if comment.has_children?
+    /   %a.MetaInfo-link{:data => {'minimize' => true}} 
+    /     %span.MetaInfo-icon=fa_icon "minus"
+    /     %span.MetaInfo-text Minimize

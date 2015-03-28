@@ -1,36 +1,33 @@
-%nav.mainNavigation
-  .l-mainNavigation-siteBrand
-    .siteBrand
-      .siteBrand-siteIcon
-        %i.icon.icons_logo_big
-      %h1.siteBrand-siteName
-        =link_to "BRNK", root_path, class: 'siteBrand-siteLink'
+%nav.Header
+  .Header-siteBranding
+    .Header-siteLogo
+      %i.icon.icons_logo_big
+    %h1.Header-siteName
+      =link_to "BRNK", root_path, class: 'Header-link'
+   
+    %h1.Header-subName
+      = yield :headerSubTitle
 
-    .mobileMenu-burgerButton
+
+  .Header-userDetails
+    =render "users/userDetails"
+
+  .MobileMenu-wrapper
+    .MobileMenu-burgerButton
       %i.icon.icons_burger
 
-
-  .l-mainNavigation-siteLinks
-    %ul.siteLinks.siteLinks--mainNavigation
-      -if signed_in?
-        %li.siteLinks-item.siteLinks-item--user
-          %a.siteLinks-link{:href => current_user}
-            %i.icon.icons_user
-            %span.username
-              =current_user.username
-      -else 
-        %li.siteLinks-item.siteLinks-item--user
-          %a.siteLinks-link{:href => login_path}
-            =fa_icon "sign-in"
-            Login
-      -if signed_in?
-        %li.siteLinks-item
-          =link_to "My frontpage", my_frontpage_path, class: 'siteLinks-link'
-      -else
-        %li.siteLinks-item
-          =link_to "Frontpage", root_path, class: 'siteLinks-link'
-
-  .l-mainNavigation-userDetails
-    =render "users/userDetails"
+    .MobileMenu
+      %ul.MobileMenu-links
+        -if signed_in?
+          %li.MobileMenu-item.MobileMenu-item--user
+            %a.MobileMenu-link{:href => current_user}
+              %i.icon.icons_user
+              %span.username
+                =current_user.username
+        -else 
+          %li.MobileMenu-item.MobileMenu-item--user
+            %a.MobileMenu-link{:href => login_path}
+              =fa_icon "sign-in"
+              Login
 
 

@@ -1,0 +1,9 @@
+.SortingBar
+  %ul.SortingMethod
+    
+  %form.SortingForm{action: request.original_url, method: 'get'}
+    .SortingForm-methodSelect
+      =select_tag(:m, options_for_select(sort_options, @sort_selected))
+    .SortingForm-timeSelect
+      =select_tag(:t, options_for_select(Rails.application.config.time_array, @time_selected), class: 'SortingForm-timeSelect')
+    =submit_tag 'Filter', name: nil, class: 'SortingForm-submit'

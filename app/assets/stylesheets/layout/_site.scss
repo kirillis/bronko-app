@@ -1,8 +1,8 @@
-.siteContent {
+.SiteContent {
   @include outer-container;
 }
 
-.mainContent {
+.MainContent {
   @include span-columns(9);
 
   @include media($palm) {
@@ -10,7 +10,7 @@
   }
 }
 
-.sidebarContent {
+.SidebarContent {
   @include span-columns(3);
 
   @include media($palm) {

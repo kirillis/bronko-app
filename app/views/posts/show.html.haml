@@ -1,12 +1,10 @@
-.post
-  =render_votes(@post)
-  %h4.postTeaser-title
-    =link_to @post.title, @post.link, class: "postTeaser-link fs-larger"
-  %p.post-description=@post.text
+-content_for :sortingBar do
+  =render partial: 'components/sortingBar', locals: {sort_options: Rails.application.config.sort_options_comments_array}
 
-  =render partial: "posts/post_meta", locals: {post: @post}
+-content_for :headerSubTitle do
+  =link_to @post.sub.name, @post.sub
 
-=render partial: 'layouts/sortingBar', locals: {sort_options: Rails.application.config.sort_options_comments_array}
+=render partial: "components/entry", locals: {:content => @post}
 
 -if @post.comments.empty?
   %p No comments posted, yet.
@@ -14,8 +12,7 @@
   =nested_comments(@comments)
 
 -if signed_in?
-  %p ToDo: add new comment box here!
-
+  =render partial: "components/addCommentBox", locals: {:post_id => @post.id}
 -else
   =link_to "Sign in to post a comment.", login_path
 

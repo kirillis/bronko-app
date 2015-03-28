@@ -1,9 +1,7 @@
-.sub
-  .sub-titleImage
+-content_for :headerSubTitle do
+  =@sub.name
 
-  %h4.sub-title=@sub.name
-  %p.sub-description=@sub.description
-  
+-content_for :sidebarContent do
   .metaInfo
     -if signed_in?
       -if is_user_subscribed?(@sub)
@@ -30,11 +28,12 @@
           %span.metaInfo-icon=fa_icon "login"
           %span.metaInfo-text To create a new post
 
-=render partial: 'layouts/sortingBar', locals: {sort_options: Rails.application.config.sort_options_posts_array}
+-content_for :sortingBar do
+  =render partial: 'components/sortingBar', locals: {sort_options: Rails.application.config.sort_options_posts_array}
 
 -unless @all_posts.empty?
   -@all_posts.each do |post|
-    =render_post_teaser(post)
+    =render partial: "components/entry", locals: {:content => post, :isPostTeaser => true}
        
 -else
   .post__excerpt

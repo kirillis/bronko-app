@@ -1,0 +1,40 @@
+.MobileMenu-burgerButton {
+  position: absolute;
+  top: $base-spacing * .5;
+  right: $base-spacing * .5;
+  font-size: $font-size-h3;
+  color: $color-red;
+
+  @include media($lap-and-up) {
+    display: none;
+  }
+}
+
+.MobileMenu {
+  padding: 0;
+  margin: 0;
+  background-color: $color-green;
+
+  &.is-closed {
+    display: none;
+  }
+}
+
+.MobileMenu-subList {
+  background-color: $color-green-dark;
+}
+
+.MobileMenu-item {
+  padding: 0;
+  border-bottom: 1px solid $color-green-light;
+}
+
+.MobileMenu-link {
+  display: block;
+  padding: 10px 0 10px $base-spacing;
+  color: $color-white;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}
