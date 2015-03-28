@@ -1,0 +1,6 @@
+-@user.subs.each do |sub|
+  .sub
+    %p
+      =link_to "#{sub.name} ", sub
+    %p= sub.description
+    %p= "Posts in sub: #{sub.posts.length}"

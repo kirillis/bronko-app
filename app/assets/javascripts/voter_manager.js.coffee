@@ -1,12 +1,12 @@
 (($, window, document) ->
 
-  $.widget "bronko.voterManager",
+  $.widget "bronko.VoterManager",
 
     _create: ->
 
-      @total = @element.find('.voter__total')
-      @upvote = @element.find('.voter__vote--up')
-      @downvote = @element.find('.voter__vote--down')
+      @total = @element.find('.Voter-total')
+      @upvote = @element.find('.Voter-voteUp')
+      @downvote = @element.find('.Voter-voteDown')
       @votableId = @element.data('id')
 
       @_on @upvote,

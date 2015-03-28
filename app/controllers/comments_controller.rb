@@ -36,13 +36,12 @@ class CommentsController < ApplicationController
         redirect_to Post.find(@comment.post_id)
       else
         flash[:alert] = 'Error, comment not created.'
-        # TODO: add more options here
-        render @post
+        redirect_to p
       end
 
     else
       flash[:alert] = "Form fields missing."
-      render "new"
+      redirect_to p
     end
   end
 

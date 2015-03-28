@@ -1,0 +1,17 @@
+.Message {
+  padding: $bsu * .5;
+  color: $color-white;
+
+  &.success {
+    background-color: $color-success;
+  }
+
+  &.alert {
+    background-color: $color-alert;
+    color: $color-black;
+  }
+
+  &.error {
+    background-color: $color-error;
+  }
+}

@@ -1,0 +1,19 @@
+.Voter{:data => { :id => obj.popmeter.id }}
+  %div.Voter-buttonWrapper
+    -if signed_in?
+      -v = current_user.voted_for(obj, current_user)
+      -if v.nil?
+        .Voter-vote.Voter-voteUp=fa_icon "arrow-up"
+        %span.Voter-total="#{obj.upvotes - obj.downvotes}"
+        .Voter-vote.Voter-voteDown=fa_icon "arrow-down"
+      -else
+        -if v.is_upvote
+          .Voter-vote.Voter-voteUp.is-current=fa_icon "arrow-up"
+          %span.Voter-total="#{obj.upvotes - obj.downvotes}"
+          .Voter-vote.Voter-voteDown=fa_icon "arrow-down"
+        -else
+          .Voter-vote.Voter-voteUp=fa_icon "arrow-up"
+          %span.Voter-total="#{obj.upvotes - obj.downvotes}"
+          .Voter-vote.Voter-voteDown.is-current=fa_icon "arrow-down"
+    -else
+      %span.Voter-total="#{obj.upvotes - obj.downvotes}"

@@ -1,0 +1,54 @@
+.Header {
+  position: relative;
+  background-color: $color-grey-light;
+}
+
+.Header-siteLogo {
+  display: inline-block;
+  font-size: $font-size-h3;
+  color: $color-red;
+
+  > .icons_logo_big {
+    padding-bottom: 4px;
+  }
+}
+
+.Header-siteName {
+  display: inline-block;
+}
+
+.Header-subName {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 300;
+  color: $color-red;
+}
+
+.Header-link {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-light;
+  color: $color-black;
+}
+
+
+.Header-siteBranding {
+  display: inline-block;
+  padding: $base-spacing * .5;
+}
+
+.Header-siteLinks {
+  @include media($lap-and-up) {
+    display: inline-block;
+  } 
+}
+
+.Header-userDetails {
+  display: none;
+
+  @include media($lap-and-up) {
+    position: absolute;
+    top: 30px;
+    right: $base-spacing * .5;
+    display: block;
+  }
+}

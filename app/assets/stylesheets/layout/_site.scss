@@ -1,16 +1,19 @@
-html,
-body {
-  height: 100%;
+.SiteContent {
+  @include outer-container;
 }
 
-.main {
-  width: 950px;
-  margin: ($bsu*2) auto;
-  margin-bottom: 0;
-  padding-bottom: 200px;   // height of the footer!
+.MainContent {
+  @include span-columns(9);
+
+  @include media($palm) {
+    @include span-columns(4);
+  }
 }
 
-.site-wrapper {
-  min-height:100%;
-  position:relative;
+.SidebarContent {
+  @include span-columns(3);
+
+  @include media($palm) {
+    @include span-columns(4);
+  }
 }

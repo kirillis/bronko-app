@@ -1,0 +1,15 @@
+input,
+label,
+select {
+  padding: $base-spacing * .5;
+  margin-right: $base-spacing * .5;
+  font-size: $font-size-small;
+  font-weight: $font-weight-light;
+  cursor: pointer;
+  background-color: $color-white;
+  border: 1px solid $color-grey;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}
