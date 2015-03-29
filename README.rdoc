@@ -1,3 +1,2 @@
 == bronko-app readme
-reddit clone for learning rails 4
-add text 
+reddit clone for learning ruby on rails
