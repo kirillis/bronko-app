@@ -4,10 +4,6 @@ module ApplicationHelper
     render partial: "posts/post_teaser", locals: {post: post}
   end
 
-  def render_votes(votable_obj)
-    render partial: "voter/voter", locals: {obj: votable_obj}
-  end
-
   def is_user_subscribed?(sub)
     sub.subscribers.where(:id => current_user.id).any?
   end
