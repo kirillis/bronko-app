@@ -29,4 +29,8 @@ module ApplicationHelper
 
     puts "All finished!"
   end
+
+  def component(name, locals)
+    render :partial => "components/#{name}", :locals => locals
+  end
 end

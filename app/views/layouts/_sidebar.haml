@@ -1,9 +1,12 @@
 .SidebarContent
   -if signed_in?
     -if current_user.subscribed_subs.any?
-      =render partial: "components/linklist", locals: {:list_items => current_user.subscribed_subs}
+      =component 'linklist', {:list_items => current_user.subscribed_subs}
 
+    =yield :sidebarContent
 
-  %a.btn.btn--positive Add post
+    =component 'button', {:url => new_sub_path, :text => 'Add new', :bold => 'sub', :modifier => 'Button--positive'}
 
-  =yield :sidebarContent
+  
+  -if defined? @sub
+    =component 'button', {:url => new_sub_post_path(@sub), :text => 'Add new', :bold => 'post', :modifier => 'Button--positive'}

@@ -1,0 +1,6 @@
+.Button{ :class => modifier}
+  =link_to url, :class => 'Button-link' do
+    =text
+    -if defined? bold
+      %span.u-fontBold
+        =bold
