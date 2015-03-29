@@ -1,8 +1,9 @@
 .Entry-wrapper {
-  margin-bottom: $bsu;
-  margin-left: $bsu * 2;
+  @include clearfix;
+  margin-bottom: $base-spacing;
+  margin-left: $base-spacing * 2;
 }
 
 .Entry-nestedWrapper {
-  margin-left: $bsu * .5;
+  margin-left: $base-spacing * .5;
 }

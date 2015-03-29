@@ -1,0 +1,27 @@
+.Voter{:data => { :id => obj.popmeter.id }}
+  .Voter-buttonWrapper
+    -if signed_in?
+      -v = current_user.voted_for(obj, current_user)
+      -if v.nil?
+        .Voter-vote.Voter-voteUp
+          %i.icon.icons_arrow_up
+        %span.Voter-total="#{obj.upvotes - obj.downvotes}"
+        .Voter-vote.Voter-voteDown
+          %i.icon.icons_arrow_down
+      -else
+        -if v.is_upvote
+          .Voter-vote.Voter-voteUp.is-current
+            %i.icon.icons_arrow_up
+          %span.Voter-total="#{obj.upvotes - obj.downvotes}"
+          .Voter-vote.Voter-voteDown
+            %i.icon.icons_arrow_down
+        -else
+          .Voter-vote.Voter-voteUp
+            %i.icon.icons_arrow_up
+          %span.Voter-total="#{obj.upvotes - obj.downvotes}"
+          .Voter-vote.Voter-voteDown.is-current
+            %i.icon.icons_arrow_down
+    -else
+
+      -# When not logged in, show only total vote number.
+      %span.Voter-total="#{obj.upvotes - obj.downvotes}"
