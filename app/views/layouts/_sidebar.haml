@@ -1,0 +1,6 @@
+.SidebarContent
+  =yield :sidebarContent
+
+  -if signed_in?
+    -if current_user.subscribed_subs.any?
+      =render partial: "components/linklist", locals: {:list_items => current_user.subscribed_subs}

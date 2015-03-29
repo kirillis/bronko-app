@@ -12,28 +12,10 @@
 
       .SiteWrapper
         =render "layouts/header"
-
         =yield :sortingBar
 
 
         .SiteContent
-          .MainContent
-            =yield
-
-          .SidebarContent
-            =yield :sidebarContent
-
-            / SUBSCRIPTIONS LIST
-            -if signed_in?
-              -if current_user.subscribed_subs.any?
-                %p My subscriptions:
-                %li.SiteLinks-item
-                  %span.SiteLinks-link My subscriptions
-                  %ul.SiteLinks-subList
-                    -current_user.subscribed_subs.each do |s|
-                      %li.SiteLinks-item=link_to s.name, s, class: 'siteLinks-link'
-
-              %p Add Sub button
-
-
+          .MainContent=yield
+          =render "layouts/sidebar"          
         =render "layouts/footer"
