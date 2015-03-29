@@ -39,10 +39,4 @@
   .post__excerpt
     %p No posts found for this sub.
 
-
--content_for :sidebarContent do
-  =render 'subs/subscriptions'
-
-
-
 =render :partial => "buttons/list", :locals => {:url => subs_path, :text => "All subs" }
