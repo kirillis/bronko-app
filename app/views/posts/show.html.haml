@@ -1,10 +1,10 @@
 -content_for :sortingBar do
-  =render partial: 'components/sortingBar', locals: {sort_options: Rails.application.config.sort_options_comments_array}
+  =component 'sortingBar', {:sort_options => Rails.application.config.sort_options_comments_array}
 
 -content_for :headerSubTitle do
   =link_to @post.sub.name, @post.sub
 
-=render partial: "components/entry", locals: {:content => @post}
+=component 'entry', {:content => @post}
 
 -if @post.comments.empty?
   %p No comments posted, yet.
@@ -12,7 +12,7 @@
   =nested_comments(@comments)
 
 -if signed_in?
-  =render partial: "components/addCommentBox", locals: {:post_id => @post.id}
+  =component 'addCommentBox', {:post_id => @post.id}
 -else
   =link_to "Sign in to post a comment.", login_path
 

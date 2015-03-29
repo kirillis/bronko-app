@@ -3,4 +3,4 @@
 -else 
   %h4 My posts:
   -@user.posts.each do |post|
-    =render partial: "components/entry", locals: {:content => post}
+    =component 'entry', {:content => post}

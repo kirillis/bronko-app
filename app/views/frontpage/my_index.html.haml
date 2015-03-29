@@ -1,7 +1,7 @@
 -if current_user.subscribed_subs.any?
-  =render partial: 'components/sortingBar', locals: {sort_options: Rails.application.config.sort_options_posts_array}
+  =component 'sortingBar', {:sort_options => Rails.application.config.sort_options_posts_array}
 
   -@all_posts.each do |post|
-    =render partial: "components/entry", locals: {:content => post, :isPostTeaser => true}
+    =component 'entry', {:content => post, :isPostTeaser => true}
 -else
   %p You have not subscribed to a sub yet.

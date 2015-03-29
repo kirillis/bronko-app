@@ -15,6 +15,6 @@
       %p.Entry-paragraph
         =content.text
 
-    =render :partial => "components/addCommentBox", :locals => {:post_id => content.post.id, :comment => content}
+    =component 'addCommentBox', {:post_id => content.post.id, :comment => content}
 
-  =render :partial => "components/metaInfo", :locals => {:content => content}
+  =component 'metaInfo', {:content => content}
