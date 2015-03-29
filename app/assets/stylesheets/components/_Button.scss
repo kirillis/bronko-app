@@ -1,0 +1,25 @@
+.Button {
+  margin-bottom: $bsu * 0.5;
+  cursor: pointer;
+}
+
+.Button-link {
+  display: inline-block;
+  padding: ($bsu * .25) ($bsu * .5);
+  border: 1px solid $color-grey;
+  border-radius: $bsu;
+}
+
+.Button-link--bold {
+  font-weight: $font-weight-bold;
+}
+
+.Button--positive .Button-link {
+  border-color: $color-green;
+  color: $color-green;
+}
+
+.Button--negative .Button-link {
+  border-color: $color-red;
+  color: $color-red;
+}
