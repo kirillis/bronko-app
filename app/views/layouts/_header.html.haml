@@ -1,9 +1,7 @@
 %nav.Header
   .Header-siteBranding
-    .Header-siteLogo
-      %i.icon.icons_logo_big
     %h1.Header-siteName
-      =link_to "BRNK", root_path, class: 'Header-link'
+      =link_to "BRNK", root_path
    
     %h1.Header-subName
       = yield :headerSubTitle
