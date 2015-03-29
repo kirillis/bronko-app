@@ -1,11 +1,10 @@
 .Entry-wrapper
   =component 'voter', {obj: content}
-
   -if content.kind_of? Post
     .Entry.Entry--post
 
-      %h3.Entry-title
-        =link_to content.title, content.link, class: ".Entry-link fs-larger"
+      %h4.Entry-title
+        =link_to content.title, content.link, class: "Entry-link"
 
       -unless defined? isPostTeaser
         %p.Entry-paragraph=content.text
