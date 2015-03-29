@@ -1,5 +1,5 @@
 .Entry-wrapper
-  =render_votes(content)
+  =component 'voter', {obj: content}
 
   -if content.kind_of? Post
     .Entry.Entry--post
