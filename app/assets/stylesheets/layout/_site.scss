@@ -17,3 +17,15 @@
     @include span-columns(4);
   }
 }
+
+.todo {
+  background-color: #FFEE8E;
+  color: #9D9D9D;
+  font-weight: 400;
+  padding: 0 8px;
+
+  &:before {
+    content: "todo: ";
+    font-weight: 700;
+  }
+}

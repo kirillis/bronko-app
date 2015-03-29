@@ -1,0 +1,17 @@
+.Linklist-title {
+  font-weight: $font-weight-bold;
+}
+
+.Linklist-list {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.Linklist-item {
+  margin-bottom: .3rem;
+}
+
+.Linklist-link {
+  color: $color-grey-dark;
+}
