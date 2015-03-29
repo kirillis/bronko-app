@@ -1,8 +1,8 @@
 .Entry-wrapper {
-  margin: $bsu 0;
+  margin-bottom: $bsu;
+  margin-left: $bsu * 2;
 }
 
-.Entry {
-  min-height: 95px;
-  margin-left: 50px;
+.Entry-nestedWrapper {
+  margin-left: $bsu * .5;
 }

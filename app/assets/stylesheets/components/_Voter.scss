@@ -1,5 +1,7 @@
 .Voter {
   float: left;
   margin-top: $base-spacing * .5;
-  margin-left: $base-spacing * .5;
+  margin-left: - $bsu * 2;
+  width: $bsu * 1.75;
+  text-align: center;
 }
