@@ -1,22 +1,16 @@
-$color-black: rgb(35, 31, 32);
-$color-grey-dark: rgb(147, 149, 151);
-$color-grey-mid: rgb(167, 169, 171);
-$color-grey: rgb(222, 224, 226);;
-$color-grey-light: #EEEEEE;
+$color-black: #050505;
+$color-grey: #9898a5;
+$color-grey-dark: #4b4c4c;
+$color-white: #f9f9f9;
 
-$color-white: rgb(243, 244, 244);
+$color-red: #e52c73;
+$color-yellow: #faaf40;
+$color-green: #6ebe44;
 
-$color-red: rgb(238, 61, 63);
-$color-yellow: yellow;
+$color-background: $color-white;
+$color-link-base: $color-black;
+$color-link-hover: $color-green;
 
-$color-green: rgb(66, 85, 92);
-$color-green-light: #30D456;
-$color-green-dark: rgb(62, 77, 80);
-
-$color-background: $color-grey;
-$color-link-base: $color-red;
-$color-link-hover: darken($color-link-base, 20%);
-
-$color-success: $color-green-light;
+$color-success: $color-green;
 $color-alert: $color-yellow;
 $color-error: $color-red;

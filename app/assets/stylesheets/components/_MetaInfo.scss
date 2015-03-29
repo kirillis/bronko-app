@@ -1,15 +1,12 @@
 .MetaInfo {
   padding: $base-spacing * .5;
-  background-color: $color-grey-light;
-  border-top: 1px solid $color-grey;
-}
-
-.MetaInfo-item {
-  display: inline-block;
-  margin-right: $base-spacing;
-  color: $color-grey-dark;
 }
 
 .MetaInfo-link {
   color: $color-grey-dark;
+}
+
+.MetaInfo-item {
+  display: inline-block;
+  color: $color-grey;
 }

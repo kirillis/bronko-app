@@ -13,20 +13,14 @@
 .MobileMenu {
   padding: 0;
   margin: 0;
-  background-color: $color-green;
 
   &.is-closed {
     display: none;
   }
 }
 
-.MobileMenu-subList {
-  background-color: $color-green-dark;
-}
-
 .MobileMenu-item {
   padding: 0;
-  border-bottom: 1px solid $color-green-light;
 }
 
 .MobileMenu-link {
