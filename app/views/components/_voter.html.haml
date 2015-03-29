@@ -1,5 +1,5 @@
 .Voter{:data => { :id => obj.popmeter.id }}
-  %div.Voter-buttonWrapper
+  .Voter-buttonWrapper
     -if signed_in?
       -v = current_user.voted_for(obj, current_user)
       -if v.nil?
