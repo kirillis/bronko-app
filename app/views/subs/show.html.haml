@@ -1,26 +1,19 @@
 -content_for :headerSubTitle do
   =@sub.name
 
+-content_for :sortingBar do
+  =component 'sortingBar', {sort_options: Rails.application.config.sort_options_posts_array}
+
 -content_for :sidebarContent do
   .metaInfo
     -if signed_in?
       -if is_user_subscribed?(@sub)
-        
-        .metaInfo-item
-          =link_to subscription_path(@sub), method: 'delete', class: "metaInfo-link" do
-            %span.metaInfo-icon=fa_icon "minus"
-            %span.metaInfo-text Unsubscribe from this sub
-
+        .Button.Button--negative
+          =link_to subscription_path(@sub), method: 'delete', class: "Button-link" do
+            Remove from
+            %span.u-fontBold favorites
       -else
-        .metaInfo-item
-          =link_to new_sub_subscription_path(@sub), class: "metaInfo-link" do
-            %span.metaInfo-icon=fa_icon "plus"
-            %span.metaInfo-text Subscribe to sub
-      
-      .metaInfo-item
-        =link_to new_sub_post_path(@sub), class: "metaInfo-link" do
-          %span.metaInfo-icon=fa_icon "plus"
-          %span.metaInfo-text Add new post
+        =component 'button', {:url => new_sub_subscription_path(@sub), :text => 'Add to', :bold => 'favorites', :modifier => 'Button--positive'}
       
     -else
       .metaInfo-item
@@ -28,15 +21,12 @@
           %span.metaInfo-icon=fa_icon "login"
           %span.metaInfo-text To create a new post
 
--content_for :sortingBar do
-  =render partial: 'components/sortingBar', locals: {sort_options: Rails.application.config.sort_options_posts_array}
+
 
 -unless @all_posts.empty?
   -@all_posts.each do |post|
-    =render partial: "components/entry", locals: {:content => post, :isPostTeaser => true}
+    =component 'entry', {:content => post, :isPostTeaser => true}
        
 -else
   .post__excerpt
     %p No posts found for this sub.
-
-=render :partial => "buttons/list", :locals => {:url => subs_path, :text => "All subs" }
