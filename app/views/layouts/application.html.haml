@@ -17,8 +17,9 @@
         .SiteContent
           =yield :sortingBar
           
-          .MainContent=yield
-          =render "layouts/sidebar"    
+          .SiteContent-outerContainer
+            .MainContent=yield
+            =render "layouts/sidebar"
 
-        .SiteFooter      
+        .SiteFooter
           =render "layouts/footer"
