@@ -11,12 +11,14 @@
       =render "components/flashMessages"
 
       .SiteWrapper
-
+        .SiteHeader
+          =render "layouts/header"
 
         .SiteContent
-          =render "layouts/header"
           =yield :sortingBar
           
           .MainContent=yield
-          =render "layouts/sidebar"          
-        =render "layouts/footer"
+          =render "layouts/sidebar"    
+
+        .SiteFooter      
+          =render "layouts/footer"
