@@ -77,3 +77,6 @@
       return
   return
 ) jQuery, window, document
+
+$(document).on 'page:change', ->
+  $('.Voter').VoterManager()
