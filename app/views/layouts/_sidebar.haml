@@ -8,5 +8,5 @@
     =component 'button', {:url => new_sub_path, :text => 'Add new', :bold => 'sub', :modifier => 'Button--positive'}
 
   
-  -if defined? @sub
+  -if defined? @sub and not current_page?(new_sub_path)
     =component 'button', {:url => new_sub_post_path(@sub), :text => 'Add new', :bold => 'post', :modifier => 'Button--positive'}
