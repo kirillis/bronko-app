@@ -4,6 +4,32 @@
 
 .SortingBar-form {
   display: none;
+
+  @include media($palm) {
+    display: block;
+  }
+}
+
+.SortinBar-formElement {
+  margin-bottom: $base-spacing * .5;
+}
+
+.SortingBar-label {
+  background-color: inherit;
+  font-weight: $font-weight-xbold;
+}
+
+.SortingBar-submit {
+  display: none;
+}
+
+.SortingBar-select {
+  padding: 6px 22px;
+  border: 1px solid $color-grey-light;
+  border-radius: 20px;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
 }
 
 .SortingBar-box {
@@ -11,6 +37,10 @@
   margin-top: 15px;
   margin-right: 15px;
   cursor: pointer;
+
+  @include media($palm) {
+    display: none;
+  }
 }
 
 .SortingBar-title {
