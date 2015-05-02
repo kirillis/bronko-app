@@ -1,58 +1,84 @@
 .SortingBar {
   margin-bottom: $base-spacing;
+}
 
-  .js & {
-    .SortingForm-methodSelect,
-    .SortingForm-submit {
-      @include media($lap-and-up) {
-        display: none;
-      }
-    }
+.SortingBar-form {
+  display: none;
+
+  @include media($palm) {
+    display: block;
   }
+}
 
-  .SortingMethod,
-  .SortingForm {
-    display: inline-block;
-  }
+.SortinBar-formElement {
+  margin-bottom: $base-spacing * .5;
+}
 
-  .SortingMethod {
+.SortingBar-label {
+  background-color: inherit;
+  font-weight: $font-weight-xbold;
+}
+
+.SortingBar-submit {
+  display: none;
+}
+
+.SortingBar-select {
+  padding: 6px 22px;
+  border: 1px solid $color-grey-light;
+  border-radius: 20px;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+
+.SortingBar-box {
+  display: inline-block;
+  margin-top: 15px;
+  margin-right: 15px;
+  cursor: pointer;
+
+  @include media($palm) {
     display: none;
-    padding-left: 0;
-    margin-bottom: 0;
-    margin-top: 0;
-
-    @include media($lap-and-up) {
-      display: inline-block;
-    }
   }
+}
 
-  .SortingForm-timeSelect,
-  .SortingForm-methodSelect,
-  .SortingForm-submit {
-    display: inline-block;
-  }
+.SortingBar-title {
+  border: 1px solid $color-grey-light;
+  padding: 6px 22px;
+  margin-bottom: 0;
+  border-radius: 20px;
+}
 
-  .SortingMethod-item,
-  .SortingForm-timeSelect {
-    font-size: $font-size-small;
-    font-weight: $font-weight-light;
+.SortingBar-titleSelected {
+  font-weight: bold;
+}
 
-    &:hover {
-      color: $color-link-hover;
-    }
-  }
+.SortingBar-list {
+  position: absolute;
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: white;
+  background-color: $color-grey-dark;
+  list-style-type: none;
+}
 
-  .SortingMethod-item {
-    display: inline-block;
-    padding: $base-spacing * .5;
-    margin-right: $base-spacing * .5;
-    cursor: pointer;
+.SortingBar-listWrapper {
+  margin: 0 19px;
+  position: relative;
+}
 
-    &.is-active {
-      color: $color-black;
-      &:hover {
-        color: $color-black;
-      }
-    }
-  }
+.SortingBar-box:hover .SortingBar-list {
+  display: block;
+}
+
+.SortingBar-link {
+  display: block;
+  width: 100%;
+  padding: 6px;
+  border-bottom: 1px solid rgb(92, 92, 92);
+  color: $color-white;
+  text-align: center;
 }

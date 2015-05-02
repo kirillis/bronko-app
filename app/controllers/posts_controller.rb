@@ -10,16 +10,16 @@ class PostsController < ApplicationController
     @sort_options_array = [['Score', 'score'], ['Comments', 'comments'], ['Votes', 'votes'], ['Newest', 'newest']]
 
 
-    if(params.has_key?(:t))
-      @time_selected = params[:t]
-      time_range = case params[:t]
+    if(params.has_key?(:sortRange))
+      @time_selected = params[:sortRange]
+      time_range = case params[:sortRange]
         when 'hour' then (1.hour.ago..Time.now)
         when 'today' then (1.day.ago..Time.now)
         when 'week' then (1.week.ago..Time.now)
         when 'month' then (1.month.ago..Time.now)
       end
 
-      if params[:t] == 'alltime'
+      if params[:sortRange] == 'alltime'
         all_comments = @post.comments
       else
         all_comments = @post.comments.where(:created_at => time_range)
@@ -30,9 +30,9 @@ class PostsController < ApplicationController
     end
 
       
-    if(params.has_key?(:m))
-      @sort_selected = params[:m]
-      @comments = case params[:m]
+    if(params.has_key?(:sortBy))
+      @sort_selected = params[:sortBy]
+      @comments = case params[:sortBy]
         when 'score' then all_comments.arrange(:order => 'score DESC, votes_diff DESC')
         when 'comments' then all_comments.arrange(:order => 'sub_comments DESC, score DESC')
         when 'newest' then all_comments.arrange(:order => 'created_at DESC, score DESC')

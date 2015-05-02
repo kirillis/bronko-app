@@ -4,7 +4,6 @@
     %meta{"name" => "viewport", "charset" => "utf-8", "content" => "width = device-width, user-scalable = no, initial-scale = 1.0"}
     %title Bronko [beta]
     =stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    =javascript_include_tag :modernizr
     =javascript_include_tag "application", "data-turbolinks-track" => true
     =csrf_meta_tags
     %body
@@ -17,8 +16,9 @@
         .SiteContent
           =yield :sortingBar
           
-          .MainContent=yield
-          =render "layouts/sidebar"    
+          .SiteContent-outerContainer
+            .MainContent=yield
+            =render "layouts/sidebar"
 
-        .SiteFooter      
+        .SiteFooter
           =render "layouts/footer"

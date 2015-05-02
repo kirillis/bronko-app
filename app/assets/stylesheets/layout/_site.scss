@@ -27,18 +27,6 @@
   }
 }
 
-.SiteWrapper {
-  @include outer-container;
-}
-
-.MainContent {
-  @include span-columns(9);
-
-  @include media($palm) {
-    @include span-columns(4);
-  }
-}
-
 .SidebarContent {
   @include span-columns(3);
 
@@ -47,14 +35,14 @@
   }
 }
 
-.todo {
-  background-color: #FFEE8E;
-  color: #9D9D9D;
-  font-weight: 400;
-  padding: 0 8px;
+.SiteContent-outerContainer {
+  @include outer-container;
+}
 
-  &:before {
-    content: "todo: ";
-    font-weight: 700;
+.MainContent {
+  @include span-columns(9);
+
+  @include media($palm) {
+    @include span-columns(4);
   }
 }
