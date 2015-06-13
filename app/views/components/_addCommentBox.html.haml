@@ -1,11 +1,16 @@
-.addCommentBox
-  =form_for Comment.new do |f|
-    =hidden_field_tag(:post_id, post_id)
-   
-    -if defined? comment
-      -unless comment.is_root?
-        =hidden_field_tag(:parent_comment, comment.parent.id)
+.CommentBox
+  .FormWrapper
+    =form_for Comment.new do |f|
+      =hidden_field_tag(:post_id, post_id)
+     
+      -if defined? parent_id
+        =hidden_field_tag(:parent_id, parent_id)
 
-    =f.text_area :text, class: "addCommentBox-text", :placeholder => "Your comment..", :rows => 5
-    =f.submit "Save", class: "addCommentBox-submit"
-    %a.addCommentBox-cancel{ :data => {'cancel_comment' => true}} Cancel
+      .FormElement
+        =f.text_area :text, class: "CommentBox-text", :placeholder => "Your comment..", :size => '30x10'
+
+      .FormElement
+        =component 'button', {:url => '#', :text => 'Save', :bold => 'comment', :modifier => 'Button--positive Button--submit'}
+
+      .FormElement
+        =component 'button', {:url => '#', :text => 'Cancel', :modifier => 'Button--negative Button--cancel'}
