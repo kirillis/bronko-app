@@ -8,13 +8,14 @@
 
 %hr/
 
--if @post.comments.empty?
-  %p No comments posted, yet.
--else
+.Entry-wrapper
+  -if signed_in?
+    %p.Entry-hint Create a new comment on this post:
+    =component 'addCommentBox', {:post_id => @post.id, :modifier => 'is-active'}
+  -else
+    =link_to "Sign in to post a comment.", login_path
+
+-if not @post.comments.empty?
   =nested_comments(@comments)
 
--if signed_in?
-  =component 'addCommentBox', {:post_id => @post.id}
--else
-  =link_to "Sign in to post a comment.", login_path
 

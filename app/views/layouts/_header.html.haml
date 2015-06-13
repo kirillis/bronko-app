@@ -1,11 +1,11 @@
 %nav.Header
   .Header-siteBranding
-    %h1.Header-siteName
+    %h4.Header-siteName
       =link_to root_path do
         =image_tag "logo.png", :class => "Header-logo"
         BRNK
 
-    %h1.Header-subName
+    %h4.Header-subName
       = yield :headerSubTitle
 
 

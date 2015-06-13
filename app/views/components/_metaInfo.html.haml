@@ -20,7 +20,8 @@
   -if content.kind_of? Comment
     .MetaInfo-item
       -if signed_in?
-        %a.MetaInfo-link{:data => {'add_comment' => true}} 
-          %span.MetaInfo-text Reply
+        post your
+        %span.MetaInfo-link{:data => {'add_comment' => true}} 
+          reply
       -else
         =link_to "Sign in to reply.", login_path

@@ -1,19 +1,19 @@
 .Entry-wrapper
   =component 'voter', {obj: content}
+  =component 'metaInfo', {:content => content}
   -if content.kind_of? Post
     .Entry.Entry--post
 
-      %h4.Entry-title
+      %h5.Entry-title
         =link_to content.title, content.link, class: "Entry-link"
 
       -unless defined? isPostTeaser
         %p.Entry-paragraph=content.text
 
-  -elsif content.kind_of? Comment
+
+  -if content.kind_of? Comment
     .Entry.Entry--comment
       %p.Entry-paragraph
         =content.text
-
     =component 'addCommentBox', {:post_id => content.post.id, :comment => content, :parent_id => content.id}
 
-  =component 'metaInfo', {:content => content}

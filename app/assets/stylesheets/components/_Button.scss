@@ -1,5 +1,8 @@
 .Button {
   margin-bottom: $base-spacing * 0.5;
+}
+
+.Button--inline {
   display: inline-block;
 }
 
@@ -25,4 +28,9 @@
 .Button--negative .Button-link {
   border-color: $color-red;
   color: $color-red;
+}
+
+.Button-link:hover {
+  background-color: $color-grey-dark;
+  color: $color-white;
 }

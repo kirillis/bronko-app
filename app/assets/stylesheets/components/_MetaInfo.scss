@@ -1,4 +1,10 @@
+.MetaInfo {
+  font-size: 80%;
+  margin-bottom: 5px;
+}
+
 .MetaInfo-link {
+  cursor: pointer;
   color: $color-grey-dark;
   border-bottom: 1px solid $color-green-light;
 }

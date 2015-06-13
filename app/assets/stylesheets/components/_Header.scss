@@ -24,6 +24,7 @@
 .Header-logo {
   margin-right: 9px;
   margin-bottom: -6px;
+  height: 28px;
 }
 
 .Header-siteLogo {
@@ -44,7 +45,7 @@
 
 .Header-subName {
   display: inline-block;
-  font-size: 28px;
+  // font-size: 28px;
   font-weight: $font-weight-light;
 
   @include media($palm) {
@@ -73,7 +74,7 @@
 
   @include media($lap-and-up) {
     position: absolute;
-    top: 8px;
+    top: 0;
     right: $base-spacing * .5;
     display: block;
   }

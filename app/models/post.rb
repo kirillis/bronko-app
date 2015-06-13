@@ -8,8 +8,9 @@ class Post < ActiveRecord::Base
   has_one :popmeter, as: :votable
 
   # validations
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 130 }
   validates :link, presence: true
+  validates :text, length: { maximum: 1200 }
 
   def total
     self.popmeter.total

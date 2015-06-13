@@ -1,27 +1,27 @@
-=gravatar_for(@user)
+.Entry-wrapper
+  =gravatar_for(@user)
 
-%h4= "Username: #{@user.username}"
+  %h5= "Username: #{@user.username}"
+  %h5 Subs
+  %p.Entry-paragraph
+    -if @user.subs.empty?
+      Not created a sub yet.
+    -else
+      ="You have created #{@user.subs.count} subs."
+      =link_to 'Lets see..', :my_subs
 
-%h5 
-  All subs:
-  -if @user.subs.empty?
-    Not created a sub yet.
-  -else
-  =@user.subs.count
-  =link_to 'see all', :my_subs
+  %h5 Posts
+  %p.Entry-paragraph
+    -if @user.posts.empty?
+      Not posted anything yet.
+    -else 
+    ="You have created #{@user.posts.count} posts."
+    =link_to 'Lets see..', :my_posts
 
-%h5 
-  My posts:
-  -if @user.posts.empty?
-    Not posted anything yet.
-  -else 
-  =@user.posts.count
-  =link_to 'see all', :my_posts
-
-%h5 
-  My comments:
-  -if @user.comments.empty?
-    No comments yet.
-  -else
-    =@user.comments.count
-    =link_to 'see all', :my_comments
+  %h5 Comments
+  %p.Entry-paragraph
+    -if @user.comments.empty?
+      No comments yet.
+    -else
+      ="You have created #{@user.comments.count} comments."
+      =link_to 'Lets see..', :my_comments

@@ -70,7 +70,7 @@ class PostsController < ApplicationController
       end
 
     else
-      flash[:alert] = "Form fields missing."
+      flash[:alert] = "Something went wrong."
       render "new"
     end
   end

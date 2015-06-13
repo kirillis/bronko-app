@@ -1,13 +1,14 @@
 $(document).on 'page:change', ->
-  $("a[data-add-comment]").on 'click', ->
-    parentComment = $(this).parents('.comment').first()
-    addCommentBox = parentComment.find(".addCommentBox")
+  $("[data-add-comment]").on 'click', ->
+    parentComment = $(this).closest('.Entry-wrapper')
+    addCommentBox = parentComment.find(".CommentBox")
 
     # FIXME: use css class to do this
-    addCommentBox.addClass('is-visible')
+    addCommentBox.addClass('is-active')
 
-  $("a[data-cancel-comment]").on 'click', ->
-    $(this).parents(".addCommentBox").removeClass('is-visible')
+  $(".Button--cancel").on 'click', (e) ->
+    e.preventDefault()
+    $(this).parents(".CommentBox").removeClass('is-active')
 
   $('a[data-minimize]').click ->
     thisComment = $(this).closest('.comment')

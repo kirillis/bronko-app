@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
   before_save { email = self.email.downcase }
 
   # relations
-  has_many :posts, -> { where :order => 'created_at DESC' }
-  has_many :subs, -> { where :order => 'created_at DESC' }
-  has_many :comments, -> { where :order => 'created_at DESC' }
+  has_many :posts, -> { order :created_at => :desc}
+
+  has_many :subs, -> { order :created_at => :desc }
+  has_many :comments, -> { order :created_at => :desc }
   has_many :votes
   has_many :subscriptions
   has_many :subscribed_subs, through: :subscriptions, :source => :sub

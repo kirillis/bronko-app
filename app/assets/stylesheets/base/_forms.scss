@@ -17,6 +17,8 @@ select {
 input,
 textarea {
   border-bottom: 1px solid $color-green;
+  max-width: 100%;
+  width: 500px;
 }
 
 .FormWrapper {
@@ -31,6 +33,9 @@ textarea {
   margin-bottom: 16px;
 }
 
+.FormElement--inline {
+  display: inline-block;
+}
 p.error {
   border-left: 5px solid $color-error;
   padding-left: 10px;

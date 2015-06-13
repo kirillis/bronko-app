@@ -6,12 +6,14 @@ class CommentsController < ApplicationController
   end
 
   def create
+    logger.warn "****************"
+    logger.warn params
     if params['parent_id']
       @comment = Comment.find(params['parent_id']).children.create(comment_params)
       @comment.post_id = params['post_id']
     else
       @post = Post.find(params['post_id'])
-      @comment = @post.comments.build(comment_params)
+      @comment = @post.comments.build(root_comment_params)
     end
 
     @comment.user = current_user
@@ -47,6 +49,9 @@ class CommentsController < ApplicationController
 
   private
 
+    def root_comment_params
+      params.require(:comment).permit(:text, :post_id)
+    end
     def comment_params
       params.require(:comment).permit(:text, :post_id, :parent_id)
     end

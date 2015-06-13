@@ -1,16 +1,16 @@
-.CommentBox
-  .FormWrapper
-    =form_for Comment.new do |f|
-      =hidden_field_tag(:post_id, post_id)
-     
-      -if defined? parent_id
-        =hidden_field_tag(:parent_id, parent_id)
+-modifier = modifier || ''
+.CommentBox{:class => "#{modifier}"}
+  =form_for Comment.new do |f|
+    =hidden_field_tag(:post_id, post_id)
+   
+    -if defined? parent_id
+      =hidden_field_tag(:parent_id, parent_id)
 
-      .FormElement
-        =f.text_area :text, class: "CommentBox-text", :placeholder => "Your comment..", :size => '30x10'
+    .FormElement
+      =f.text_area :text, class: "CommentBox-text", :placeholder => "Your comment..", :size => '33x8'
 
-      .FormElement
-        =component 'button', {:url => '#', :text => 'Save', :bold => 'comment', :modifier => 'Button--positive Button--submit'}
+    .FormElement.FormElement--inline
+      =component 'button', {:url => '#', :text => 'Save', :bold => 'comment', :modifier => 'Button--positive Button--submit'}
 
-      .FormElement
-        =component 'button', {:url => '#', :text => 'Cancel', :modifier => 'Button--negative Button--cancel'}
+    .FormElement.FormElement--inline
+      =component 'button', {:url => '#', :text => 'Cancel', :modifier => 'Button--negative Button--cancel'}
