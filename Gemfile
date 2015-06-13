@@ -11,7 +11,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'haml'
 gem 'haml-rails'
 gem 'thin'
-gem 'puma'
 gem 'autoprefixer-rails', '~> 3.0.1'
 gem 'ancestry', '~> 2.1.0'
 gem 'faker', '~> 1.3.0'
@@ -24,6 +23,7 @@ group :doc do
 end
 
 group :production do
+  gem 'puma'
   gem 'pg', '0.15.1' # use postgresql on production
   gem 'rails_12factor', '0.0.2'
 end
@@ -35,7 +35,7 @@ group :development do
   # ---------------------------------
   # better errors, binding of caller and meta request from video tutorial: 
   # http://railscasts.com/episodes/402-better-errors-railspanel?autoplay=true
-  gem 'better_errors'
+  gem 'better_errors', '< 2.0.0'
   gem 'binding_of_caller'
   gem 'meta_request'
   # ---------------------------------
