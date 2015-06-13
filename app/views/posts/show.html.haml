@@ -6,6 +6,8 @@
 
 =component 'entry', {:content => @post}
 
+%hr/
+
 -if @post.comments.empty?
   %p No comments posted, yet.
 -else

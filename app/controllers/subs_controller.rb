@@ -48,7 +48,12 @@ class SubsController < ApplicationController
 
   def create
     new_sub = current_user.subs.create(sub_params)
-    redirect_to new_sub
+    if new_sub.valid?
+      redirect_to subs_path
+    else
+      flash[:error] = "Please fill out all neccessary fields."
+      redirect_to new_sub_path
+    end
   end
 
   def destroy

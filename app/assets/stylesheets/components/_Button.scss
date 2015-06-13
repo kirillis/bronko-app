@@ -1,13 +1,16 @@
 .Button {
   margin-bottom: $base-spacing * 0.5;
-  cursor: pointer;
+  display: inline-block;
 }
 
 .Button-link {
+  cursor: pointer;
   display: inline-block;
   padding: ($base-spacing * .25) ($base-spacing * .5);
   border: 1px solid $color-grey;
   border-radius: $base-spacing;
+  min-width: 150px;
+  text-align: center;
 }
 
 .Button-link--bold {

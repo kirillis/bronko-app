@@ -1,3 +1,6 @@
+-content_for :headerSubTitle do
+  My frontpage
+
 -if current_user.subscribed_subs.any?
   =component 'sortingBar', {:sort_options => Rails.application.config.sort_options_posts_array}
 

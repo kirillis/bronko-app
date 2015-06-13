@@ -1,8 +1,4 @@
 -if !flash.empty?
   -flash.each do |type, msg|
     .Message{:class => type}
-      -if type == "success"
-        =fa_icon "check"
-      -else 
-        =fa_icon "exclamation"
       = msg

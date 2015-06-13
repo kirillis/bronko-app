@@ -1,8 +1,10 @@
 %nav.Header
   .Header-siteBranding
     %h1.Header-siteName
-      =link_to "BRNK", root_path
-   
+      =link_to root_path do
+        =image_tag "logo.png", :class => "Header-logo"
+        BRNK
+
     %h1.Header-subName
       = yield :headerSubTitle
 
@@ -25,8 +27,7 @@
         -else 
           %li.MobileMenu-item.MobileMenu-item--user
             %a.MobileMenu-link{:href => login_path}
-              =fa_icon "sign-in"
-              Login
+              %i.icon.icons_login Login
 
       = yield :mobileMenuSorting
 

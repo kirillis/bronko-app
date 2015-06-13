@@ -12,3 +12,24 @@ select {
     color: $color-link-hover;
   }
 }
+
+input {
+  border-bottom: 1px solid $color-green;
+}
+
+.FormWrapper {
+  margin-left: 42px;
+
+  input[type=submit] {
+    display: none;
+  }
+}
+
+.FormElement {
+  margin-bottom: 16px;
+}
+
+p.error {
+  border-left: 5px solid $color-error;
+  padding-left: 10px;
+}

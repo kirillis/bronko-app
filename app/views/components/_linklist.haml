@@ -1,7 +1,6 @@
 .Linklist
   %p.Linklist-title 
-    Favorite subs 
-    %span.todo fav-icon
+    Favorites
   %ul.Linklist-list
     -list_items.each do |item|
       %li.Linklist-item=link_to item.name, item, :class => 'Linklist-link'

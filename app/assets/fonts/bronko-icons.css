@@ -73,21 +73,31 @@
 }
 
 
-.icons_logo:before {
+.icons_login:before {
 	content:"\f108";
 }
 
 
-.icons_logo_big:before {
+.icons_logo:before {
 	content:"\f109";
 }
 
 
-.icons_plus:before {
+.icons_logo_big:before {
 	content:"\f10a";
 }
 
 
-.icons_user:before {
+.icons_logout:before {
 	content:"\f10b";
+}
+
+
+.icons_plus:before {
+	content:"\f10c";
+}
+
+
+.icons_user:before {
+	content:"\f10d";
 }

@@ -1,5 +1,13 @@
+hr {
+  border: 0;
+  margin: 50px 30%;
+  border-bottom: 1px solid transparent;
+  display: block;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   color: $color-black;
   font-family: $font-sans;
   font-size: $font-base-size;
@@ -13,7 +21,7 @@ h4,
 h5,
 h6 {
   line-height: $font-header-lineheight;
-  font-weight: $font-weight-light;
+  font-weight: $font-weight-normal;
   margin: 0 0 .5rem;
   text-rendering: optimizeLegibility; // Fix the character spacing for headings
 }

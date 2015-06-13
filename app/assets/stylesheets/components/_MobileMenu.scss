@@ -1,9 +1,9 @@
 .MobileMenu-burgerButton {
   position: absolute;
-  top: $base-spacing * .5;
+  top: 0;
   right: $base-spacing * .5;
   font-size: $font-size-h3;
-  color: $color-red;
+  color: $color-white;
 
   @include media($lap-and-up) {
     display: none;

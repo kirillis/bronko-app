@@ -5,8 +5,8 @@
       %span.username
         =current_user.username
     %a.UserDetails-logout{:href => logout_path, :data => {'method' => 'delete'}}
-      =fa_icon "sign-out"
+      %i.icon.icons_logout
   -else
     %a.UserDetails-login{:href => login_path}
-      =fa_icon "sign-in"
+      %i.icon.icons_login
       Login

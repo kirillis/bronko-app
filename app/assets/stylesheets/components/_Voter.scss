@@ -10,8 +10,16 @@
   color: $color-grey;
 }
 
+.Voter-voteUp {
+  padding-bottom: 4px;
+}
+
 .Voter-vote {
   color: $color-grey;
+
+  .is-user & {
+    cursor: pointer;
+  }
 
   &.is-current {
     color: $color-green;

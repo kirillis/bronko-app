@@ -79,4 +79,4 @@
 ) jQuery, window, document
 
 $(document).on 'page:change', ->
-  $('.Voter').VoterManager()
+  $('.Voter.is-user').VoterManager()

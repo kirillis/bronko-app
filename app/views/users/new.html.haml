@@ -1,24 +1,28 @@
-%h1 Sign up
+.FormWrapper
+  %h4 Sign up
 
-- if @user.errors.any?
-  %h3 Form errors:
-  %ul.errors
-  - for message_error in @user.errors.full_messages
-    %li= message_error
+  - if @user.errors.any?
+    - for message_error in @user.errors.full_messages
+      %p.Entry-paragraph.error= message_error
 
-=form_for(@user) do |f|
+  =form_for(@user) do |f|
 
-  %p Username:
-  =f.text_field :username
+    .FormElement
+      %p.Entry-paragraph Username:
+      =f.text_field :username
 
-  %p Email (optional):
-  =f.text_field :email
+    .FormElement
+      %p.Entry-paragraph Email (optional):
+      =f.text_field :email
 
-  %p Password: 
-  =f.password_field :password
+    .FormElement
+      %p.Entry-paragraph Password: 
+      =f.password_field :password
 
-  %p Confirm password:
-  =f.password_field :password_confirmation
+    .FormElement
+      %p.Entry-paragraph Confirm password:
+      =f.password_field :password_confirmation
 
-  =f.submit :Signup, :class => "button"
+    .FormElement
+      =component 'button', {:url => '#', :text => 'Create account', :modifier => 'Button--positive Button--submit'}
 

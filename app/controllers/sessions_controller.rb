@@ -4,16 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    logger.debug "New post: #{params}"
     user = User.find_by username: params[:session][:username]
 
     if user && user.authenticate(params[:session][:password])
-      flash[:success] = "correct"
+      flash[:success] = "You are now logged in."
       sign_in(user, params[:remember_me])
       redirect_to root_url
       return
     else
-      flash.now[:error] = "so wrong"
+      flash.now[:error] = "Your password or username is not correct, please try again."
     end
 
     render "new"

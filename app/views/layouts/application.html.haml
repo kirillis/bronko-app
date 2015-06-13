@@ -13,8 +13,10 @@
         .SiteHeader
           =render "layouts/header"
 
-        .SiteContent
+        .SiteNavi
           =yield :sortingBar
+
+        .SiteContent
           
           .SiteContent-outerContainer
             .MainContent=yield
