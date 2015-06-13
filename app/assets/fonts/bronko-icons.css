@@ -4,17 +4,17 @@
 
 @font-face {
 	font-family:"bronko-icons";
-	src:url("/assets/bronko-icons.eot");
+	src:font-url("/assets/bronko-icons.eot");
 	font-weight:normal;
 	font-style:normal;
 }
 @font-face {
 	font-family:"bronko-icons";
-	src:url("/assets/bronko-icons.eot");
-	src:url("/assets/bronko-icons.eot?#iefix") format("embedded-opentype"),
-		url("/assets/bronko-icons.woff") format("woff"),
-		url("/assets/bronko-icons.ttf") format("truetype"),
-		url("/assets/bronko-icons.svg?#bronko-icons") format("svg");
+	src:font-url("/assets/bronko-icons.eot");
+	src:font-url("/assets/bronko-icons.eot?#iefix") format("embedded-opentype"),
+		font-url("/assets/bronko-icons.woff") format("woff"),
+		font-url("/assets/bronko-icons.ttf") format("truetype"),
+		font-url("/assets/bronko-icons.svg?#bronko-icons") format("svg");
 	font-weight:normal;
 	font-style:normal;
 }
