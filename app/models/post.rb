@@ -9,7 +9,6 @@ class Post < ActiveRecord::Base
 
   # validations
   validates :title, presence: true
-  validates :text, presence: true
   validates :link, presence: true
 
   def total

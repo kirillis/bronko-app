@@ -54,16 +54,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    sub = Sub.find(params['sub_id'])
-    post = sub.posts.build(post_params)
-    post.user = current_user
-    post.popmeter = Popmeter.create
+    @sub = Sub.find(params['sub_id'])
+    @post = @sub.posts.build(post_params)
+    @post.user = current_user
+    @post.popmeter = Popmeter.create
 
-    if post.valid?
+    if @post.valid?
 
-      if post.save
+      if @post.save
         flash[:success] = 'Post was successfully created.'
-        redirect_to post
+        redirect_to @post
       else
         flash[:alert] = 'Error, post not created.'
         render action: 'new'
