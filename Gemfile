@@ -4,19 +4,19 @@ gem 'rails', '4.0.4'
 gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1.0'
 gem 'jquery-ui-rails', '~> 5.0.0'
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.2.1'
 gem 'jbuilder', '~> 1.2'
 gem 'haml'
-gem "haml-rails"
+gem 'haml-rails'
 gem 'thin'
-gem "font-awesome-rails"
-gem "autoprefixer-rails"
-gem 'ancestry'
-gem 'faker'
-gem 'bourbon'
-gem 'neat'
+gem 'puma'
+gem 'autoprefixer-rails', '~> 3.0.1'
+gem 'ancestry', '~> 2.1.0'
+gem 'faker', '~> 1.3.0'
+gem 'bourbon', '~> 2.1.0'
+gem 'neat', '~> 1.5.0'
 gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
 
 group :doc do
