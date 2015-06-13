@@ -1,24 +1,23 @@
 class FrontpageController < ApplicationController
 
   def index
-
-    if(params.has_key?(:t))
-      @time_selected = params[:t]
+    if(params.has_key?(:sortRange))
+      @time_selected = params[:sortRange]
       time_range = get_time_range(@time_selected)
 
-      if params[:t] == 'alltime'
+      if params[:sortRange] == 'alltime'
         @all_posts = Post.includes(:comments, :user, :sub, :popmeter)
       else
         @all_posts = Post.includes(:comments, :user, :sub, :popmeter).where(:created_at => time_range)
       end
     else
-      @time_selected = 'month'
-      @all_posts = Post.includes(:comments, :user, :sub, :popmeter).where(:created_at => (1.month.ago..Time.now))
+      @time_selected = 'alltime'
+      @all_posts = Post.includes(:comments, :user, :sub, :popmeter)
     end
       
-    if(params.has_key?(:m))
-      @sort_selected = params[:m]
-      @all_posts = sort_objects(@all_posts, params[:m])
+    if(params.has_key?(:sortBy))
+      @sort_selected = params[:sortBy]
+      @all_posts = sort_objects(@all_posts, params[:sortBy])
     else
       @sort_selected = 'hotness'
       @all_posts = sort_objects(@all_posts)
@@ -27,24 +26,23 @@ class FrontpageController < ApplicationController
   end
 
   def my_index
-
-    if(params.has_key?(:t))
-      @time_selected = params[:t]
+    if(params.has_key?(:sortRange))
+      @time_selected = params[:sortRange]
       time_range = get_time_range(@time_selected)
 
-      if params[:t] == 'alltime'
+      if params[:sortRange] == 'alltime'
         @all_posts = Post.includes(:comments, :user, :sub, :popmeter).joins("INNER JOIN subscriptions ON posts.sub_id = subscriptions.sub_id").where('subscriptions.user_id' => current_user.id)
       else
         @all_posts = Post.includes(:comments, :user, :sub, :popmeter).joins("INNER JOIN subscriptions ON posts.sub_id = subscriptions.sub_id").where('subscriptions.user_id' => current_user.id, :created_at => time_range )
       end
     else
-      @time_selected = 'month'
+      @time_selected = 'alltime'
       @all_posts = Post.includes(:comments, :user, :sub, :popmeter).joins("INNER JOIN subscriptions ON posts.sub_id = subscriptions.sub_id").where('subscriptions.user_id' => current_user.id, :created_at => (1.month.ago..Time.now) )
     end
 
-    if(params.has_key?(:m))
-      @sort_selected = params[:m]
-      @all_posts = sort_objects(@all_posts, params[:m])
+    if(params.has_key?(:sortBy))
+      @sort_selected = params[:sortBy]
+      @all_posts = sort_objects(@all_posts, params[:sortBy])
     else
       @sort_selected = 'hotness'
       @all_posts = sort_objects(@all_posts)

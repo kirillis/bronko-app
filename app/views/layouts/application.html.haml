@@ -1,16 +1,26 @@
 !!!
-%html
+%html.no-js{"lang" => "en"}
   %head
-    %meta{"name" => "viewport", "content" => "width=device-width", "initial-scale" => "1.0"}
-    %title Simple CMS
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-    = csrf_meta_tags
+    %meta{"name" => "viewport", "charset" => "utf-8", "content" => "width = device-width, user-scalable = no, initial-scale = 1.0"}
+    %title Bronko [beta]
+    =stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    =javascript_include_tag "application", "data-turbolinks-track" => true
+    =csrf_meta_tags
     %body
-      .site-wrapper        
-        =render "layouts/header"
-        =render "layouts/flash_messages"    
-        .main 
-          = yield
+      =render "components/flashMessages"
 
-        =render "layouts/footer"
+      .SiteWrapper
+        .SiteHeader
+          =render "layouts/header"
+
+        .SiteNavi
+          =yield :sortingBar
+
+        .SiteContent
+          
+          .SiteContent-outerContainer
+            .MainContent=yield
+            =render "layouts/sidebar"
+
+        .SiteFooter
+          =render "layouts/footer"

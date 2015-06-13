@@ -1,0 +1,4 @@
+-if !flash.empty?
+  -flash.each do |type, msg|
+    .Message{:class => type}
+      = msg

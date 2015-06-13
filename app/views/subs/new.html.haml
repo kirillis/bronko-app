@@ -1,18 +1,21 @@
-%h1 Create new sub
+.FormWrapper
+  %h4 Create new sub
 
-- if @sub.errors.any?
-  %h3 Form errors:
-  %ul.errors
-  - for message_error in @sub.errors.full_messages
-    %li= message_error
+  - if @sub.errors.any?
+    - for message_error in @sub.errors.full_messages
+      %p.Entry-paragraph.errors= message_error
 
-=form_for @sub do |f|
+  =form_for @sub do |f|
+    
+    .FormElement
+      %p.Entry-paragraph Name:
+      =f.text_field :name
 
-  %p Name:
-  =f.text_field :name
+    .FormElement
+      %p.Entry-paragraph Description: (optional)
+      =f.text_area :description, :size => '45x8'
 
-  %p Description: (optional)
-  =f.text_field :description
+    .FormElement
+      =component 'button', {:url => '#', :text => 'Create', :bold => 'new sub', :modifier => 'Button--positive Button--submit'}
 
-  =f.submit "Create sub", :class => "button"
 

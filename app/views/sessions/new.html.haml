@@ -1,20 +1,23 @@
-%h2 Login
+.FormWrapper
+  %h4 Login
 
-= form_for(:session, url: sessions_path) do |f|
+  = form_for(:session, url: sessions_path, :html => {:class => 'Form-login'} ) do |f|
 
-  %p Username:
-  =f.text_field :username
+    .FormElement
+      %p.Entry-paragraph Username:
+      =f.text_field :username
 
-  %p Password:
-  =f.password_field :password
+    .FormElement
+      %p.Entry-paragraph Password:
+      =f.password_field :password
 
 
-  =label_tag(:remember_me, "Remember me")
-  =check_box_tag(:remember_me)
-  %br/
+    .FormElement
+      =label_tag(:remember_me, "Remember me")
+      =check_box_tag(:remember_me)
 
-  =f.submit :Login, :class => "button"
+    .FormElement
+      =component 'button', {:url => '#', :text => 'Login', :modifier => 'Button--positive Button--submit'}
 
-  %p 
-    New User? 
-    =link_to "Register now!", new_user_path
+    .FormElement
+      =component 'button', {:url => new_user_path, :text => 'Create', :bold => 'new account', :modifier => 'Button--positive'}

@@ -1,0 +1,26 @@
+.Entry-wrapper {
+  @include clearfix;
+  margin-bottom: $base-spacing;
+  margin-left: $base-spacing * 2;
+}
+
+.Entry-nestedWrapper {
+  margin-left: $base-spacing * 1.5;
+}
+
+.Entry-paragraph {
+  color: $color-grey-dark;
+
+}
+
+.errors {
+  border-left: 1px solid $color-red;
+  padding: 0 5px;
+  background-color: rgba($color-red, 0.16);
+  display: inline;
+}
+
+.Entry-hint {
+  font-size: 80%;
+  color: $color-grey;
+}

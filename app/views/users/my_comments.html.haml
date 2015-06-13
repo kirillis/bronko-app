@@ -1,0 +1,5 @@
+-@user.comments.each do |comment|
+  =render partial: "components/entry", locals: {:content => comment, :comments_post => comment.post}
+  .Entry-wrapper
+    %p.Entry-hint
+      =link_to "Goto post where above comment was made.", comment.post

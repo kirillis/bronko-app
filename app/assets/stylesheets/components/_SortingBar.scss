@@ -1,0 +1,84 @@
+.SortingBar {
+  color: $color-white;
+}
+
+.SortingBar-form {
+  display: none;
+
+  @include media($palm) {
+    display: block;
+  }
+}
+
+.SortinBar-formElement {
+  margin-bottom: $base-spacing * .5;
+}
+
+.SortingBar-label {
+  background-color: inherit;
+  font-weight: $font-weight-xbold;
+}
+
+.SortingBar-submit {
+  display: none;
+}
+
+.SortingBar-select {
+  padding: 6px 22px;
+  border: 1px solid $color-grey-light;
+  border-radius: 20px;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+
+.SortingBar-box {
+  display: inline-block;
+  margin-right: 15px;
+  cursor: pointer;
+
+  @include media($palm) {
+    display: none;
+  }
+}
+
+.SortingBar-title {
+  padding: 12px 22px;
+  margin-bottom: 0;
+}
+
+.SortingBar-titleSelected {
+  font-weight: bold;
+}
+
+.SortingBar-list {
+  position: absolute;
+  display: none;
+  margin: 0;
+  padding: 0 0 5px 0;
+  width: 100%;
+  color: white;
+  background-color: $color-grey-dark;
+  list-style-type: none;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0px 5px 18px -5px $color-black;
+}
+
+.SortingBar-listWrapper {
+  margin: 0;
+  position: relative;
+}
+
+.SortingBar-box:hover .SortingBar-list {
+  display: block;
+}
+
+.SortingBar-link {
+  display: block;
+  width: 100%;
+  padding: 6px 0 6px 22px;
+  border-bottom: 1px solid rgb(92, 92, 92);
+  color: $color-white;
+  // text-align: center;
+}

@@ -1,0 +1,17 @@
+.Message {
+  padding: $base-spacing * .5;
+  color: $color-white;
+
+  &.success {
+    background-color: $color-success;
+  }
+
+  &.alert {
+    background-color: $color-error;
+    color: $color-black;
+  }
+
+  &.error {
+    background-color: $color-error;
+  }
+}

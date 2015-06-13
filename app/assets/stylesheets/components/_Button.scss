@@ -1,0 +1,36 @@
+.Button {
+  margin-bottom: $base-spacing * 0.5;
+}
+
+.Button--inline {
+  display: inline-block;
+}
+
+.Button-link {
+  cursor: pointer;
+  display: inline-block;
+  padding: ($base-spacing * .25) ($base-spacing * .5);
+  border: 1px solid $color-grey;
+  border-radius: $base-spacing;
+  min-width: 150px;
+  text-align: center;
+}
+
+.Button-link--bold {
+  font-weight: $font-weight-bold;
+}
+
+.Button--positive .Button-link {
+  border-color: $color-green;
+  color: $color-green;
+}
+
+.Button--negative .Button-link {
+  border-color: $color-red;
+  color: $color-red;
+}
+
+.Button-link:hover {
+  background-color: $color-grey-dark;
+  color: $color-white;
+}

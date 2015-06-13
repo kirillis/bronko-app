@@ -1,21 +1,26 @@
-%h1 Create new post
+.FormWrapper
+  - if @post.errors.any?
+    - for message_error in @post.errors.full_messages
+      %p.Entry-paragraph.errors= message_error
 
-- if @post.errors.any?
-  %h3 Form errors:
-  %ul.errors
-  - for message_error in @post.errors.full_messages
-    %li= message_error
+  %h4 Create a new post
 
-=form_for [@sub, @post] do |f|
+  =form_for [@sub, @post] do |f|
 
-  %p Link:
-  =f.text_field :link
+    .FormElement
+      %p.Entry-paragraph Title:
+      =f.text_field :title
+      %p.Entry-hint This is the text that will will to the site that you specify in the 'Link' field.
 
-  %p Title:
-  =f.text_field :title
+    .FormElement
+      %p.Entry-paragraph Link:
+      =f.text_field :link
+      %p.Entry-hint This is the link to the site that you want to share with the community.
 
-  %p Text:
-  =f.text_area :text
+    .FormElement
+      %p.Entry-paragraph Description (optional):
+      =f.text_area :text, :size => '44x10'
+      %p.Entry-hint If you want, you can add a short description. This will only appear on the post discussion page.
 
-  =f.submit :Submit, :class => "button"
-
+    .FormElement
+      =component 'button', {:url => '#', :text => 'Create', :bold => 'new post', :modifier => 'Button--positive Button--submit'}

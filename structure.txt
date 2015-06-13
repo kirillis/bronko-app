@@ -1,0 +1,25 @@
+-main site nav
+
+  -siteBrand
+    -siteBrand-siteLogo
+    -siteBrnad-siteName
+
+  -siteLinks
+    -siteLinks-item
+      -frontpage
+    -siteLinks-item
+      -my frontpage
+    -siteLinks-item
+      -all subs
+
+  -userDetails    
+    -logged in?
+      -userDetails-userAvatar
+      -userDetails-userName
+      -userDetails-userScores
+      -userDetails-logoutLink
+    -else
+      -userDetails-login
+      -userDetails-register (maybe put this on login page?)
+
+  -search

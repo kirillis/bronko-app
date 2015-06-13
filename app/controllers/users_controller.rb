@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes({posts: [:popmeter, :user]}, {comments: [:post, :user, :popmeter]}, subs: :posts ).find(params[:id])
+    @user = User.includes(
+      { :posts => [:popmeter, :user] },
+      { :comments => [:post, :user, :popmeter] },
+      :subs => :posts)
+    .find(params[:id])
   end
 
   def new
@@ -30,21 +34,50 @@ class UsersController < ApplicationController
     if @user.valid?
 
       if @user.save
-        flash[:success] = "Account created."
+        flash[:success] = "Your account has been created."
         redirect_to @user
         return
 
       else
-        flash[:alert] = "Error creating account."
+        flash[:error] = "Error creating account."
         render "new"
         return
       end
 
     else
-      flash[:alert] = "Form fields missing."
+      flash[:error] = "Please fill out all the fields."
       render "new"
     end
+  end
 
+  def my_posts
+    if signed_in?
+      @user = User.includes(posts: [:popmeter, :user]).find(current_user.id)
+      render 'my_posts'
+    else
+      flash[:error] = "You need to be logged in to view this page."
+      redirect_to root_path
+    end      
+  end
+
+  def my_subs
+    if signed_in?
+      @user = User.includes(subs: :posts).find(current_user.id)
+      render 'my_subs'
+    else
+      flash[:error] = "You need to be logged in to view this page."
+      redirect_to root_path
+    end      
+  end
+
+  def my_comments
+    if signed_in?
+      @user = User.includes(comments: [:post, :user, :popmeter]).find(current_user.id)
+      render 'my_comments'
+    else
+      flash[:error] = "You need to be logged in to view this page."
+      redirect_to root_path
+    end      
   end
 
   def user_params

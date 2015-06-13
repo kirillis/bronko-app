@@ -1,0 +1,42 @@
+input,
+label,
+textarea,
+select {
+  padding: $base-spacing * .5;
+  margin-right: $base-spacing * .5;
+  font-size: $font-size-small;
+  font-weight: $font-weight-light;
+  cursor: pointer;
+  background-color: $color-white;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}
+
+input,
+textarea {
+  border-bottom: 1px solid $color-green;
+  max-width: 100%;
+  width: 500px;
+}
+
+.FormWrapper {
+  margin-left: 42px;
+
+  input[type=submit] {
+    display: none;
+  }
+}
+
+.FormElement {
+  margin-bottom: 16px;
+}
+
+.FormElement--inline {
+  display: inline-block;
+}
+p.error {
+  border-left: 5px solid $color-error;
+  padding-left: 10px;
+}

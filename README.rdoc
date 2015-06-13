@@ -1,4 +1,2 @@
-=== bronko-app readme
-reddit clone for learning rails 4
-
-url: http://bronko.herokuapp.com/
+== bronko-app readme
+reddit clone for learning ruby on rails

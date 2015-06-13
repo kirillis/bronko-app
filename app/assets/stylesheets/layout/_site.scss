@@ -1,16 +1,64 @@
-html,
-body {
-  height: 100%;
+.SiteContent,
+.SiteFooter {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include media($lap) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @include media($desk) {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
 }
 
-.main {
-  width: 950px;
-  margin: ($bsu*2) auto;
-  margin-bottom: 0;
-  padding-bottom: 200px;   // height of the footer!
+.SiteWrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-.site-wrapper {
-  min-height:100%;
-  position:relative;
+.SiteContent {
+  flex: 1;
+}
+
+.SiteHeader {
+  padding-top: 13px;
+  background-color: $color-green;
+}
+
+.SiteNavi {
+  background-color: $color-green;
+  margin-bottom: 42px;
+
+  @include media($lap) {
+    padding-left: 57px;
+  }
+
+  @include media($desk) {
+    padding-left: 75px;
+  }
+}
+
+.SidebarContent {
+  @include span-columns(3);
+
+  @include media($palm) {
+    @include span-columns(4);
+  }
+}
+
+.SiteContent-outerContainer {
+  @include outer-container;
+}
+
+.MainContent {
+  padding-right: $base-spacing;
+  @include span-columns(9);
+
+  @include media($palm) {
+    @include span-columns(4);
+  }
 }

@@ -1,0 +1,27 @@
+.MetaInfo
+  .MetaInfo-item
+    %span.MetaInfo-icon
+      %span.MetaInfo-text="Posted #{time_ago_in_words(content.created_at)} ago "
+
+  .MetaInfo-item
+    -if content.user
+      by
+      =link_to content.user.username, content.user, :class => "MetaInfo-link"
+    
+  -if content.kind_of? Post
+    .MetaInfo-item
+      in
+      =link_to content.sub.name, content.sub, :class => "MetaInfo-link"
+
+    .MetaInfo-item
+      with
+      =link_to "#{content.comments.length} comments", content, :class => "MetaInfo-link"
+
+  -if content.kind_of? Comment
+    .MetaInfo-item
+      -if signed_in?
+        post your
+        %span.MetaInfo-link{:data => {'add_comment' => true}} 
+          reply
+      -else
+        =link_to "Sign in to reply.", login_path

@@ -1,19 +1,11 @@
 module ApplicationHelper
 
   def render_post_teaser(post)
-    render partial: "layouts/post_teaser", locals: {post: post}
-  end
-
-  def render_votes(votable_obj)
-    render partial: "layouts/voter", locals: {obj: votable_obj}
+    render partial: "posts/post_teaser", locals: {post: post}
   end
 
   def is_user_subscribed?(sub)
     sub.subscribers.where(:id => current_user.id).any?
-  end
-
-  def time_array
-    [['Last hour', 'hour'], ['Today', 'today'], ['Week', 'week'], ['Month', 'month'], ['Alltime', 'alltime']]
   end
 
   def recalculate_hotness
@@ -32,5 +24,9 @@ module ApplicationHelper
     end
 
     puts "All finished!"
+  end
+
+  def component(name, locals)
+    render :partial => "components/#{name}", :locals => locals
   end
 end

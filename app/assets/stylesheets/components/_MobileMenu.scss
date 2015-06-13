@@ -1,0 +1,34 @@
+.MobileMenu-burgerButton {
+  position: absolute;
+  top: 0;
+  right: $base-spacing * .5;
+  font-size: $font-size-h3;
+  color: $color-white;
+
+  @include media($lap-and-up) {
+    display: none;
+  }
+}
+
+.MobileMenu {
+  padding: 0;
+  margin: 0;
+
+  &.is-closed {
+    display: none;
+  }
+}
+
+.MobileMenu-item {
+  padding: 0;
+}
+
+.MobileMenu-link {
+  display: block;
+  padding: 10px 0 10px $base-spacing;
+  color: $color-white;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}

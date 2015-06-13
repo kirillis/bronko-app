@@ -1,34 +1,32 @@
-%h4=@sub.name
-%p=@sub.description
+-content_for :headerSubTitle do
+  =@sub.name
 
--if signed_in?
-  =render :partial => "buttons/add", :locals => {:url => new_sub_post_path(@sub), :text => "Add new post" }
-  
-  -if is_user_subscribed?(@sub)
-    =link_to 'Unsubscribe from this sub', subscription_path(@sub), :method => :delete
-  -else
-    =render :partial => "buttons/subscribe", :locals => {:url => new_sub_subscription_path(@sub), :text => "Subscribe to this sub" }
--else
-  %p
-    To create a new post
-    =link_to "sign in", login_path
+-content_for :sortingBar do
+  =component 'sortingBar', {sort_options: Rails.application.config.sort_options_posts_array}
 
-.row
-  .sorting
-    %form{action: request.original_url, method: 'get'}
-      .small-4.columns
-        =select_tag(:t, options_for_select(Rails.application.config.time_array, @time_selected))
-      .small-4.columns
-        =select_tag(:m, options_for_select(@sort_options_array, @sort_selected))
-      .small-4.columns
-        =submit_tag 'Filter', name: nil
+-content_for :sidebarContent do
+  .metaInfo
+    -if signed_in?
+      -if is_user_subscribed?(@sub)
+        .Button.Button--negative
+          =link_to subscription_path(@sub), method: 'delete', class: "Button-link" do
+            Remove from
+            %span.u-fontBold favorites
+      -else
+        =component 'button', {:url => new_sub_subscription_path(@sub), :text => 'Add to', :bold => 'favorites', :modifier => 'Button--positive'}
+      
+    -else
+      .metaInfo-item
+        =link_to login_path, class: "metaInfo-link" do
+          %span.metaInfo-icon=fa_icon "login"
+          %span.metaInfo-text To create a new post
+
+
 
 -unless @all_posts.empty?
   -@all_posts.each do |post|
-    =render_post_teaser(post)
+    =component 'entry', {:content => post, :isPostTeaser => true}
        
 -else
   .post__excerpt
     %p No posts found for this sub.
-
-=render :partial => "buttons/list", :locals => {:url => subs_path, :text => "All subs" }

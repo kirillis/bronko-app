@@ -1,0 +1,47 @@
+.SortingBar
+  .SortingBar-box
+    -sort_options.each do |option_name, option|
+      -if @sort_selected == option
+        %p.SortingBar-title
+          Sort by
+          %span.SortingBar-titleSelected=option_name
+    .SortingBar-listWrapper
+      %ul.SortingBar-list
+        -sort_options.each do |option_name, option|
+          -if @sort_selected == option
+            %li{ :class => 'SortingBar-listItem is-active' }
+              %a{ :href => request.path + "?sortBy=" + option + "&sortRange=" + @time_selected, :class => 'SortingBar-link' }=option_name
+          -else
+            %li.SortingBar-listItem
+              %a{ :href => request.path + "?sortBy=" + option + "&sortRange=" + @time_selected, :class => 'SortingBar-link' }=option_name
+
+  .SortingBar-box
+    -Rails.application.config.time_array.each do |option_name, option|
+      -if @time_selected == option
+        %p.SortingBar-title
+          Results for
+          %span.SortingBar-titleSelected=option_name
+    .SortingBar-listWrapper
+      %ul.SortingBar-list
+        -Rails.application.config.time_array.each do |option_name, option|
+          -if @time_selected == option
+            %li{ :class => 'SortingBar-listItem is-active' }
+              %a{ :href => request.path + "?sortBy=" + @sort_selected + "&sortRange=" + option, :class => 'SortingBar-link' }=option_name
+          -else
+            %li.SortingBar-listItem
+              %a{ :href => request.path + "?sortBy=" + @sort_selected + "&sortRange=" + option, :class => 'SortingBar-link' }=option_name
+
+-# Put a form for sorint in the mobile menu.
+-content_for :mobileMenuSorting do
+  %form.SortingBar-form{ :action => request.original_url, :method => 'get'}
+    .SortinBar-formElement
+      %label.SortingBar-label{:for => ":sortBy"}
+        Sort by
+      =select_tag(:sortBy, options_for_select(sort_options, @sort_selected), :class => 'SortingBar-select')
+
+    .SortinBar-formElement
+      %label.SortingBar-label{:for => ":sortRange"}
+        Results for
+      =select_tag(:sortRange, options_for_select(Rails.application.config.time_array, @time_selected), :class => 'SortingBar-select')
+
+    =submit_tag 'Filter', :class => 'SortingBar-submit'

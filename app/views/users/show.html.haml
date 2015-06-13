@@ -1,44 +1,27 @@
-%h3 User Details
+.Entry-wrapper
+  =gravatar_for(@user)
 
-=gravatar_for(@user)
+  %h5= "Username: #{@user.username}"
+  %h5 Subs
+  %p.Entry-paragraph
+    -if @user.subs.empty?
+      Not created a sub yet.
+    -else
+      ="You have created #{@user.subs.count} subs."
+      =link_to 'Lets see..', :my_subs
 
-%p= "Username: #{@user.username}"
+  %h5 Posts
+  %p.Entry-paragraph
+    -if @user.posts.empty?
+      Not posted anything yet.
+    -else 
+    ="You have created #{@user.posts.count} posts."
+    =link_to 'Lets see..', :my_posts
 
--if @user.subs.empty?
-  %p Not created a sub yet.
--else
-  %h4 All subs:
-  -@user.subs.each do |sub|
-    .sub
-      %p
-        =link_to "#{sub.name} ", sub
-      %p= sub.description
-      %p= "Posts in sub: #{sub.posts.length}"
-
--if @user.posts.empty?
-  %p Not posted anything yet.
--else 
-  %h4 All posts:
-  -@user.posts.each do |post|
-    .post__excerpt
-      %p
-        =link_to "#{truncate(post.title, length: 100)} ", post
-      %p
-        &mdash;
-        ="#{post.upvotes}/#{post.downvotes} - created"
-        =time_ago_in_words(post.created_at)
-
--if @user.comments.empty?
-  %p No comments yet.
--else
-  %h4 All comments:
-  -@user.comments.each do |comment|
-    .comment
-      =link_to comment.post.title, comment.post.link
-      %p= comment.text
-      %p
-        &mdash;
-        ="#{comment.upvotes}/#{comment.downvotes} - created"
-        =time_ago_in_words(comment.created_at)
-        ="-"
-        =link_to "show post", comment.post
+  %h5 Comments
+  %p.Entry-paragraph
+    -if @user.comments.empty?
+      No comments yet.
+    -else
+      ="You have created #{@user.comments.count} comments."
+      =link_to 'Lets see..', :my_comments

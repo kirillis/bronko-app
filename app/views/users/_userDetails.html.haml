@@ -1,0 +1,12 @@
+.UserDetails
+  -if signed_in?
+    =link_to current_user, :class => 'UserDetails-userName' do
+      %i.icon.icons_user
+      %span.username
+        =current_user.username
+    %a.UserDetails-logout{:href => logout_path, :data => {'method' => 'delete'}}
+      %i.icon.icons_logout
+  -else
+    %a.UserDetails-login{:href => login_path}
+      %i.icon.icons_login
+      Login

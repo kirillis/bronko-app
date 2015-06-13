@@ -1,0 +1,7 @@
+-if @user.posts.empty?
+  %p Not posted anything yet.
+-else
+  .Entry-wrapper
+    %h5 My posts
+  -@user.posts.each do |post|
+    =component 'entry', {:content => post}

@@ -1,0 +1,16 @@
+@import "vendor/neat/neat-helpers";
+
+// define breakpoint vars to use in media() calls here
+// e.g. $mobile: new-breakpoint(max-width 480px 4);
+//      usage: @include media($mobile) { ... }
+
+$max-width: 100%;
+
+$palm-max: 600px;
+$lap-max: 1224px;
+
+$palm: new-breakpoint(max-width $palm-max 4);
+$lap: new-breakpoint(min-width $palm-max, max-width $lap-max 8);
+$desk: new-breakpoint(min-width 1225px 12);
+
+$lap-and-up: new-breakpoint(min-width $palm-max);

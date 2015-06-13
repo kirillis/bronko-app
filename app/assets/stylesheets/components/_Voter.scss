@@ -1,0 +1,27 @@
+.Voter {
+  float: left;
+  padding-top: $base-spacing * .15;
+  margin-left: - $base-spacing * 2;
+  width: $base-spacing * 1.75;
+  text-align: center;
+}
+
+.Voter-total {
+  color: $color-grey;
+}
+
+.Voter-voteUp {
+  padding-bottom: 4px;
+}
+
+.Voter-vote {
+  color: $color-grey;
+
+  .is-user & {
+    cursor: pointer;
+  }
+
+  &.is-current {
+    color: $color-green;
+  }
+}

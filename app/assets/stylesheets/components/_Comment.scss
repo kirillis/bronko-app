@@ -1,0 +1,7 @@
+.CommentBox {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}
