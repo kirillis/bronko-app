@@ -1,5 +1,6 @@
 input,
 label,
+textarea,
 select {
   padding: $base-spacing * .5;
   margin-right: $base-spacing * .5;
@@ -13,7 +14,8 @@ select {
   }
 }
 
-input {
+input,
+textarea {
   border-bottom: 1px solid $color-green;
 }
 
