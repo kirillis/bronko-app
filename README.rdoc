@@ -1,2 +1,3 @@
 == bronko-app readme
 reddit clone for learning ruby on rails
+https://bronko.herokuapp.com
