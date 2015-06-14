@@ -6,6 +6,8 @@ class Sub < ActiveRecord::Base
   has_many :subscribers, through: :subscriptions, :source => :user
   belongs_to :user
 
+  self.per_page = 30
+
   # scopes
   scope :visible, -> { where(:visible => true) }
   scope :invisible, -> { where(:visible => false) }

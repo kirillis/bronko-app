@@ -25,7 +25,8 @@
 -unless @all_posts.empty?
   -@all_posts.each do |post|
     =component 'entry', {:content => post, :isPostTeaser => true}
-       
+  =will_paginate @all_posts
+
 -else
   .Entry-wrapper
     %p No posts found for this sub.

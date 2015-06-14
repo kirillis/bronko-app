@@ -6,3 +6,7 @@
       .MetaInfo-item
         Created by
         =link_to sub.user.username, sub.user, :class => "MetaInfo-link"
+      .MetaInfo-item
+        ="with #{sub.posts.count} posts"
+
+=will_paginate @subs
