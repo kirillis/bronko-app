@@ -1,11 +1,8 @@
--if signed_in?
-  =render "buttons/add", :url => new_sub_path, :text => "Add new sub"
--else
-  %p
-    To create a new sub
-    =link_to "sign in", login_path
-
 -@subs.each do |sub|
-  %h4=link_to sub.name, sub
-
-  =#render partial: "subs/sub_meta", locals: {sub: sub}
+  .Entry-wrapper
+    %h4=link_to sub.name, sub
+    %p.Entry-paragraph=sub.description
+    .MetaInfo
+      .MetaInfo-item
+        Created by
+        =link_to sub.user.username, sub.user, :class => "MetaInfo-link"
