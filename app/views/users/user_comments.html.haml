@@ -1,3 +1,7 @@
+.Entry-wrapper
+  %h5
+    All comments posted by
+    =link_to @user.username, @user
 -@user.comments.each do |comment|
   =render partial: "components/entry", locals: {:content => comment, :comments_post => comment.post}
   .Entry-wrapper

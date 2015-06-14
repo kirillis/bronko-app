@@ -1,0 +1,9 @@
+.Entry-wrapper
+  %h5
+    All subs created by
+    =link_to @user.username, @user
+-@user.subs.each do |sub|
+  .Entry-wrapper
+    %h5=link_to "#{sub.name} ", sub
+    %p.Entry-hint= "There are #{sub.posts.length} in this sub."
+    %p.Entry-paragraph= sub.description
