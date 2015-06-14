@@ -6,13 +6,13 @@ class FrontpageController < ApplicationController
       time_range = get_time_range(@time_selected)
 
       if params[:sortRange] == 'alltime'
-        @all_posts = Post.includes(:comments, :user, :sub, :popmeter)
+        @all_posts = Post.includes(:comments, :user, :sub, :popmeter).paginate(:page => params[:page])
       else
-        @all_posts = Post.includes(:comments, :user, :sub, :popmeter).where(:created_at => time_range)
+        @all_posts = Post.includes(:comments, :user, :sub, :popmeter).where(:created_at => time_range).paginate(:page => params[:page])
       end
     else
       @time_selected = 'alltime'
-      @all_posts = Post.includes(:comments, :user, :sub, :popmeter)
+      @all_posts = Post.includes(:comments, :user, :sub, :popmeter).paginate(:page => params[:page])
     end
       
     if(params.has_key?(:sortBy))

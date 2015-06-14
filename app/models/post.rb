@@ -12,6 +12,8 @@ class Post < ActiveRecord::Base
   validates :link, presence: true
   validates :text, length: { maximum: 1200 }
 
+  self.per_page = 30
+
   def total
     self.popmeter.total
   end

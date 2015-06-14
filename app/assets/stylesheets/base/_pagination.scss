@@ -1,0 +1,22 @@
+.pagination {
+  text-align: center;
+  margin-top: 60px;
+
+  > a,
+  .disabled,
+  .current {
+    color: $color-grey-dark;
+    border: 1px solid $color-grey;
+    border-radius: 30px;
+    padding: 2px 13px;
+    text-align: center;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+
+  .current {
+    border-color: $color-green;
+    color: $color-green;
+    font-style: normal;
+  }
+}
