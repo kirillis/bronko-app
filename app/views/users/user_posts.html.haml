@@ -2,6 +2,8 @@
   %p Not posted anything yet.
 -else
   .Entry-wrapper
-    %h5 My posts
+    %h5
+      All posts by
+      =link_to @user.username, @user
   -@user.posts.each do |post|
     =component 'entry', {:content => post}

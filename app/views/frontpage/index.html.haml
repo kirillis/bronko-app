@@ -6,3 +6,5 @@
 
 -@all_posts.each do |post|
   =component 'entry', {:content => post, :isPostTeaser => true}
+
+=will_paginate @all_posts

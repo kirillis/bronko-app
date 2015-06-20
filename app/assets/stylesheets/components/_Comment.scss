@@ -1,7 +1,12 @@
 .CommentBox {
   display: none;
 
-  &.is-active {
+  &.is-active,
+  &.is-first {
     display: block;
+  }
+
+  &.is-first .Button--cancel {
+    display: none;
   }
 }

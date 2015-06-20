@@ -11,7 +11,7 @@
 .Entry-wrapper
   -if signed_in?
     %p.Entry-hint Create a new comment on this post:
-    =component 'addCommentBox', {:post_id => @post.id, :modifier => 'is-active'}
+    =component 'addCommentBox', {:post_id => @post.id, :modifier => 'is-first'}
   -else
     =link_to "Sign in to post a comment.", login_path
 

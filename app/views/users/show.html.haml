@@ -8,7 +8,7 @@
       Not created a sub yet.
     -else
       ="You have created #{@user.subs.count} subs."
-      =link_to 'Lets see..', :my_subs
+      =link_to 'Lets see..', :user_subs
 
   %h5 Posts
   %p.Entry-paragraph
@@ -16,7 +16,7 @@
       Not posted anything yet.
     -else 
     ="You have created #{@user.posts.count} posts."
-    =link_to 'Lets see..', :my_posts
+    =link_to 'Lets see..', :user_posts
 
   %h5 Comments
   %p.Entry-paragraph
@@ -24,4 +24,4 @@
       No comments yet.
     -else
       ="You have created #{@user.comments.count} comments."
-      =link_to 'Lets see..', :my_comments
+      =link_to 'Lets see..', :user_comments

@@ -50,34 +50,19 @@ class UsersController < ApplicationController
     end
   end
 
-  def my_posts
-    if signed_in?
-      @user = User.includes(posts: [:popmeter, :user]).find(current_user.id)
-      render 'my_posts'
-    else
-      flash[:error] = "You need to be logged in to view this page."
-      redirect_to root_path
-    end      
+  def user_posts
+    @user = User.includes(posts: [:popmeter, :user]).find(params[:id])
+    render 'user_posts'
   end
 
-  def my_subs
-    if signed_in?
-      @user = User.includes(subs: :posts).find(current_user.id)
-      render 'my_subs'
-    else
-      flash[:error] = "You need to be logged in to view this page."
-      redirect_to root_path
-    end      
+  def user_subs
+    @user = User.includes(subs: :posts).find(params[:id])
+    render 'user_subs' 
   end
 
-  def my_comments
-    if signed_in?
-      @user = User.includes(comments: [:post, :user, :popmeter]).find(current_user.id)
-      render 'my_comments'
-    else
-      flash[:error] = "You need to be logged in to view this page."
-      redirect_to root_path
-    end      
+  def user_comments
+    @user = User.includes(comments: [:post, :user, :popmeter]).find(params[:id])
+    render 'user_comments'
   end
 
   def user_params
